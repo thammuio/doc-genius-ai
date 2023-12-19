@@ -1,0 +1,19 @@
+name: Chatbot for Cloudera Documentation
+
+entries:
+  - title: Chatbot for Cloudera Documentation
+    label: chat-cloudera-docs
+    short_description: Chatbot for Cloudera Documentation hosted on Cloudera CML
+    long_description: >-
+      GenAI LLM for Cloudera Documentation Summary
+    image_path: >-
+      https://raw.githubusercontent.com/thammuio/chat-cloudera-docs/main/images/cldr_genai_docs.png
+    tags:
+      - Cloudera
+      - GenAI
+      - DocSummarizer
+      - Clouder Docs
+      - chatbot
+      - DastAPI
+    git_url: "https://github.com/thammuio/genai-cldr-doc-summarizer.git"
+    is_prototype: true        

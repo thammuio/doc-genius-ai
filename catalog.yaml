@@ -15,5 +15,5 @@ entries:
       - Clouder Docs
       - chatbot
       - DastAPI
-    git_url: "https://github.com/thammuio/genai-cldr-doc-summarizer.git"
+    git_url: "https://github.com/thammuio/chat-cloudera-docs.git"
     is_prototype: true        

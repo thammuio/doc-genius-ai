@@ -108,14 +108,14 @@ tasks:
     environment_variables:
       TASK_TYPE: START_APPLICATION
 
-- type: start_application
-  name: Chatbot UI for Cloudera Docs
-  subdomain: chatbot
-  script: chat-ui/start.py
-  short_summary: Build and start UI application with Yarn
-  long_summary: This task will run yarn build followed by yarn start.
-  cpu: 2
-  memory: 8
-  environment_variables:
-    TASK_TYPE: START_APPLICATION
+  - type: start_application
+    name: Chatbot UI for Cloudera Docs
+    subdomain: chatbot
+    script: chat-ui/start.py
+    short_summary: Build and start UI application with Yarn
+    long_summary: This task will run yarn build followed by yarn start.
+    cpu: 2
+    memory: 8
+    environment_variables:
+      TASK_TYPE: START_APPLICATION
 

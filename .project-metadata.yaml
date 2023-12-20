@@ -26,7 +26,6 @@ runtimes:
   - editor: JupyterLab
     kernel: Python 3.9
     edition: Nvidia GPU
-    # edition: Standard
 
 tasks:
   - type: run_session
@@ -112,7 +111,7 @@ tasks:
 - type: start_application
   name: Chatbot UI for Cloudera Docs
   subdomain: chatbot
-  script: chat-ui/start.sh
+  script: chat-ui/start.py
   short_summary: Build and start UI application with Yarn
   long_summary: This task will run yarn build followed by yarn start.
   cpu: 1

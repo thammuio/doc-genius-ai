@@ -2,7 +2,7 @@ import subprocess
 import sys
 
 # Define the command to be executed
-command = [sys.executable, "-m", "pip", "install", "-r", "requirements.txt"]
+command = [sys.executable, "-m", "pip", "install", "-r", "session/install-deps/requirements.txt"]
 
 try:
     # Run the command

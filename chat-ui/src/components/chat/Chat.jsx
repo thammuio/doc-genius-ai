@@ -132,7 +132,7 @@ export default function Chat() {
                 </Button>
                 <Label>Current Model</Label>
                 <Badge variant="outline" className="w-fit mt-2">
-                  {model?.name || "No model selected"}
+                  {model?.name || "No Model selected"}
                 </Badge>
                 <Button variant="link" className="w-fit p-0">
                   <Link
@@ -141,7 +141,7 @@ export default function Chat() {
                     className="flex gap-2"
                   >
                     <MoveUpRight className="h-4 w-4" />
-                    Model page
+                    <small>Model page</small>
                   </Link>
                 </Button>
               </CardContent>
@@ -215,7 +215,7 @@ export default function Chat() {
               </Button>
             </div>
             <small className="ml-2 text-gray-500 text-xs">
-              Current Model: {model?.name || "There is no model selected"}
+              Current Model: {model?.name || "No Model selected"}
             </small>
           </form>
         </CardFooter>

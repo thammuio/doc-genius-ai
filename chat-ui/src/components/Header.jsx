@@ -51,7 +51,7 @@ export default function Header() {
       <Image
         src="/cloudera-newco-logo.png"
         alt="Cloudera Documentation"
-        width={140}
+        width={180}
         height={32}
       />
       <Popover>

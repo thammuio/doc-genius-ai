@@ -108,10 +108,19 @@ tasks:
     environment_variables:
       TASK_TYPE: START_APPLICATION
 
+  - type: run_session
+    name: Setup Node, NPM, and YARN
+    script: chat-ui/setup.py
+    short_summary: Chatbot UI Env Setup
+    long_summary: Chatbot UI Env Setup
+    kernel: python3
+    cpu: 2
+    memory: 8
+
   - type: start_application
     name: Chatbot UI for Cloudera Docs
     subdomain: chatbot
-    script: chat-ui/start.py
+    script: chat-ui/deploy.py
     short_summary: Build and start UI application with Yarn
     long_summary: This task will run yarn build followed by yarn start.
     cpu: 2

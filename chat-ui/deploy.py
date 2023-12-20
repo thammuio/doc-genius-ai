@@ -1,3 +1,8 @@
+import os
 import subprocess
 
-subprocess.run(["yarn", "start"], check=True)
+# Change the current working directory to 'chat-ui'
+os.chdir('chat-ui')
+
+# Run the 'yarn build' command
+subprocess.run(["yarn", "build"], check=True)

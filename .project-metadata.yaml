@@ -3,8 +3,8 @@ description: |
   Ask me anything about Cloudera Documentation
 
 author: Suri Nuthalapati
-specification_version: 0.1
-prototype_version: 0.1
+specification_version: 0.2
+prototype_version: 0.2
 date: "2023-11-22"
 
 environment_variables:
@@ -114,7 +114,7 @@ tasks:
   script: chat-ui/start.py
   short_summary: Build and start UI application with Yarn
   long_summary: This task will run yarn build followed by yarn start.
-  cpu: 1
+  cpu: 2
   memory: 8
   environment_variables:
     TASK_TYPE: START_APPLICATION

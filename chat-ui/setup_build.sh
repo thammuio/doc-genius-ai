@@ -6,12 +6,13 @@ node -v
 npm -v
 yarn -v
 
-# Install or update nvm
+# Delete .nvm directory if it exists and clone nvm
 if [ -d "$HOME/.nvm" ]; then
-    cd "$HOME/.nvm" && git pull origin master
-else
-    git clone https://github.com/nvm-sh/nvm.git "$HOME/.nvm"
+    rm -rf "$HOME/.nvm"
 fi
+
+# Clone nvm
+git clone https://github.com/nvm-sh/nvm.git "$HOME/.nvm"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -87,21 +88,21 @@ PROJECT_DIR="$PWD/chat-ui"
 cd $PROJECT_DIR
 echo "Current working directory: $PWD"
 
-# Delete node_modules directory if it exists
-echo "Deleting previos project dependencies..."
-if [ -d "node_modules" ]; then
-    rm -rf node_modules
-fi
+# # Delete node_modules directory if it exists
+# echo "Deleting previos project dependencies..."
+# if [ -d "node_modules" ]; then
+#     rm -rf node_modules
+# fi
 
-# Delete .next directory if it exists
-if [ -d ".next" ]; then
-    rm -rf .next
-fi
+# # Delete .next directory if it exists
+# if [ -d ".next" ]; then
+#     rm -rf .next
+# fi
 
-# Delete yarn.lock file if it exists
-if [ -f "yarn.lock" ]; then
-    rm yarn.lock
-fi
+# # Delete yarn.lock file if it exists
+# if [ -f "yarn.lock" ]; then
+#     rm yarn.lock
+# fi
 
 
 # Install project dependencies

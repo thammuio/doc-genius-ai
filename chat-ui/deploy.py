@@ -5,4 +5,4 @@ import subprocess
 os.chdir('chat-ui')
 
 # Run the 'yarn build' command
-subprocess.run(["yarn", "build"], check=True)
+subprocess.run(["yarn", "start"], check=True)

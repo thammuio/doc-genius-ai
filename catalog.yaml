@@ -13,7 +13,8 @@ entries:
       - GenAI
       - DocSummarizer
       - Clouder Docs
-      - chatbot
-      - DastAPI
+      - Chatbot
+      - FastAPI
+      - LLM
     git_url: "https://github.com/thammuio/chat-cloudera-docs.git"
     is_prototype: true        

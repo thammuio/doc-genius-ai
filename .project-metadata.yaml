@@ -125,8 +125,8 @@ tasks:
     name: Chatbot UI for Cloudera Docs
     subdomain: chatbotui
     script: chat-ui/app.py
-    short_summary: Build and start UI application with Yarn
-    long_summary: This task will run yarn build followed by yarn start.
+    short_summary: Start UI application with Flask
+    long_summary: This task will run Flask app to serve the UI code
     cpu: 2
     memory: 8
     environment_variables:

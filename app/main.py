@@ -10,17 +10,13 @@ import os
 
 def create_app():
     CDSW_DOMAIN = os.getenv('CDSW_DOMAIN')
-    CDSW_APP_PORT = os.getenv('CDSW_APP_PORT')
     app = FastAPI()
     app.add_middleware(
     CORSMiddleware,
     allow_origins = [
     "*",
-    "http://localhost",
-    "http://localhost:8080",
-    "http://localhost:3000",
-    "http://{}:{}".format(CDSW_DOMAIN, CDSW_APP_PORT),
-    "http://localhost:8100",
+    f"https://chatbotapi.{CDSW_DOMAIN}",
+    f"https://chatbotui.{CDSW_DOMAIN}",
     "*.cloudera.site",
     ],
     allow_credentials=True,
@@ -33,9 +29,9 @@ def create_app():
     app.include_router(settings_router)
     return app
 
-def run_server(app, host="0.0.0.0", port=None, log_level="warning", reload=False):
+def run_server(app, host="127.0.0.1", port=None, log_level="warning", reload=False):
     if port is None:
-        port = int(os.getenv('CDSW_APP_PORT', 8080))  # Default to 8080 if API_PORT is not set
+        port = int(os.getenv('CDSW_APP_PORT', 9000))  # Default to 8080 if API_PORT is not set
     uvicorn.run(app, host=host, port=port, log_level=log_level, reload=reload)
 
 def main():

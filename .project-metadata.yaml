@@ -21,6 +21,10 @@ environment_variables:
   PINECONE_INDEX:
     default: "cloudera-docs"
     description: "Only Required for Pinecone Vector DB: The default is 'cloudera-docs' and can be changed to identify variations for organizations with multiple indexes."
+  NEXT_PUBLIC_CHATBOT_API_DOMAIN:
+    default: "$CDSW_DOMAIN"
+    description: "Required for building UI application: Enter the domain for the Chatbot API. This is the same as the CDSW_DOMAIN environment variable."
+    required: true
 
 runtimes:
   - editor: JupyterLab
@@ -43,7 +47,7 @@ tasks:
     short_summary: Check for GPU capability. 
     long_summary: Check GPU device supports the CUDA capabilities required.
     kernel: python3
-    cpu: 2
+    cpu: 4
     memory: 16
     gpu: 1
 
@@ -52,7 +56,7 @@ tasks:
     script: session/install-deps/install_general_deps.py
     short_summary: Install Dependencies
     kernel: python3
-    cpu: 2
+    cpu: 4
     memory: 16
 
   - type: run_session
@@ -98,11 +102,11 @@ tasks:
 
   - type: start_application
     name: Chatbot API for Cloudea Docs
-    subdomain: chatbot
+    subdomain: chatbotapi
     script: app/main.py
     short_summary: Create and start FastAPI
     long_summary: Create and start API for Llama2 application. Ensure available GPUs for best performance. Remember to enable unauthenticated app access for external access to the UI.
-    cpu: 2
+    cpu: 4
     memory: 16
     gpu: 1
     environment_variables:
@@ -119,8 +123,8 @@ tasks:
 
   - type: start_application
     name: Chatbot UI for Cloudera Docs
-    subdomain: chatbot
-    script: chat-ui/deploy.py
+    subdomain: chatbotui
+    script: chat-ui/app.py
     short_summary: Build and start UI application with Yarn
     long_summary: This task will run yarn build followed by yarn start.
     cpu: 2

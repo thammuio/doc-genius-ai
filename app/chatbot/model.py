@@ -9,7 +9,7 @@ from app.utils.constants import ENGINE_NAME
 import pinecone
 if os.getenv('VECTOR_DB').upper() == "MILVUS":
     from pymilvus import connections, Collection
-    import utils.vectordb.start_milvus as vector_db
+    import app.utils.vectordb.start_milvus as vector_db
     import app.embeddings.embeddings_utils as model_embedding
 
 if os.getenv('VECTOR_DB').upper() == "PINECONE":

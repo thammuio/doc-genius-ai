@@ -82,6 +82,7 @@ export default function ChatProvider({ children }) {
           "Content-Type": "application/json",
           "Accept": "application/json",
           "Access-Control-Allow-Origin": origin,
+          "Origin": origin,
         },
         body,
       });

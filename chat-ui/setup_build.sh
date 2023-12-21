@@ -36,10 +36,6 @@ yarn -v
 
 
 # Biuild the project
-# Select nvm
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-
 
 # Check if Node.js is installed
 if ! command -v node &> /dev/null; then

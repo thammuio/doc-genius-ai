@@ -25,7 +25,7 @@ export default function ChatProvider({ children }) {
   const [isFinishedConversation, setIsFinishedConversation] = useState(false);
 
   useEffect(() => {
-    fetch(process.env.CHATBOT_SETTINGS_URL).then((response) => {
+    fetch("http://ec2-3-17-174-15.us-east-2.compute.amazonaws.com:8080/settings").then((response) => {
       if (response.ok) {
         response.json().then((data) => {
           if (data?.models) {
@@ -72,7 +72,7 @@ export default function ChatProvider({ children }) {
 
       console.log("Sending request with body:", body);
 
-      const response = await fetch(process.env.CHATBOT_API_URL, {
+      const response = await fetch("http://ec2-3-17-174-15.us-east-2.compute.amazonaws.com:8080/chat", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

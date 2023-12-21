@@ -41,40 +41,19 @@ yarn -v
 if ! command -v node &> /dev/null; then
     echo "Node.js is not installed. Please install Node.js first."
     exit 1
-else
-    version=$(node -v)
-    major_version=${version:1:2}
-    if [ "$major_version" != "21" ]; then
-        echo "Node.js version 21 is not installed. Please install Node.js version 21."
-        exit 1
-    fi
 fi
 
 # Check if npm is installed
 if ! command -v npm &> /dev/null; then
     echo "npm is not installed. Please install npm first."
     exit 1
-else
-    version=$(npm -v)
-    major_version=${version%%.*}
-    if [ "$major_version" != "10" ]; then
-        echo "npm version 10 is not installed. Please install npm version 10."
-        exit 1
-    fi
 fi
 
 # Check if Yarn is installed
 if ! command -v yarn &> /dev/null; then
     echo "Yarn is not installed. Installing Yarn..."
     # Install Yarn using npm (Node.js package manager)
-    npm install -g yarn
-else
-    version=$(yarn -v)
-    major_minor_version=${version%.*}
-    if [ "$major_minor_version" != "1.22" ]; then
-        echo "Yarn version 1.22 is not installed. Please install Yarn version 1.22."
-        exit 1
-    fi
+    # npm install -g yarn
 fi
 
 # Define the project directory where your front-end application code is located

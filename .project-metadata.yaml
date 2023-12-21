@@ -101,7 +101,7 @@ tasks:
     short_summary: Populate Pinecone Vector DB with documents embeddings (This will only run if you set "PINECONE" as the Vector DB and provided valid parameters.)
 
   - type: start_application
-    name: Chatbot API for Cloudea Docs
+    name: Chatbot API for Cloudera Docs
     subdomain: chatbotapi
     script: app/main.py
     short_summary: Create and start FastAPI

@@ -23,9 +23,13 @@ export default function ChatProvider({ children }) {
   const [temperature, setTemperature] = useState(0.7);
   const [maxTokens, setMaxTokens] = useState(100);
   const [isFinishedConversation, setIsFinishedConversation] = useState(false);
+  const domain = process.env.NEXT_PUBLIC_CHATBOT_API_DOMAIN;
+  const api = `https://chatbotapi.${domain}`;
+  const origin = `https://chatbotui.${domain}`;
+
 
   useEffect(() => {
-    fetch("http://ec2-3-17-174-15.us-east-2.compute.amazonaws.com:8080/settings").then((response) => {
+    fetch(`${api}/settings`).then((response) => {
       if (response.ok) {
         response.json().then((data) => {
           if (data?.models) {
@@ -72,11 +76,12 @@ export default function ChatProvider({ children }) {
 
       console.log("Sending request with body:", body);
 
-      const response = await fetch("http://ec2-3-17-174-15.us-east-2.compute.amazonaws.com:8080/chat", {
+      const response = await fetch(`${api}/chat`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Accept: "application/json",
+          "Accept": "application/json",
+          "Access-Control-Allow-Origin": origin,
         },
         body,
       });

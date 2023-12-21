@@ -20,6 +20,8 @@ def create_app():
     "http://localhost:8080",
     "http://localhost:3000",
     "http://{}:{}".format(CDSW_DOMAIN, CDSW_APP_PORT),
+    "http://localhost:8100",
+    "*.cloudera.site",
     ],
     allow_credentials=True,
     allow_methods=["*"],

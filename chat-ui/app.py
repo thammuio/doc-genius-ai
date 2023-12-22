@@ -11,6 +11,10 @@ def serve_next_static(path):
 def serve_public(path):
     return send_from_directory('public', path)
 
+@app.route('/_next/image/<path:path>')
+def serve_next_image(path):
+    return send_from_directory(os.path.join(current_app.root_path, 'chat-ui/.next/static/media'), path)
+
 @app.route('/', defaults={'path': ''})
 @app.route('/<path:path>')
 def serve(path):

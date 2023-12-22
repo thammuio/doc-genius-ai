@@ -4,8 +4,8 @@
   width: 7px;
   height: 7px;
   border-radius: 5px;
-  background-color: #9880ff;
-  color: rgb(161 161 170);
+  background-color: #828282;
+  color: rgb(255 132 0);
   box-shadow: 9999px 0 0 -5px;
   animation: dot-pulse 2s infinite linear;
   animation-delay: 0.25s;
@@ -19,8 +19,8 @@
   width: 7px;
   height: 7px;
   border-radius: 5px;
-  background-color: #9880ff;
-  color: rgb(161 161 170);
+  background-color: #828282;
+  color: rgb(255 132 0);
 }
 .dot-pulse::before {
   box-shadow: 9984px 0 0 -5px;

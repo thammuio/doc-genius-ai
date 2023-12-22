@@ -23,12 +23,16 @@ import LoadingDots from "./LoadingDots";
 import UserMessage from "./UserMessage";
 import { Send, MessageSquarePlus, MoveUpRight, Settings } from "lucide-react";
 import Link from "next/link";
+import Image from 'next/image';
+import cmlicon from '../../images/cmlicon.svg';
+import cmltext from '../../images/cmltext-black.svg';
 
 const sampleQuestions = [
   "What is Cloudera Machine Learning?",
   "Does CML Supports MLOps?",
   "Provide me List of Cloudera AMPs?",
 ];
+
 
 export default function Chat() {
   const {
@@ -113,6 +117,7 @@ export default function Chat() {
             >{`Cloudera's documentation`}</Link>{" "}
             universe!
           </CardDescription>
+
           <div className="md:absolute right-4 top-4 flex gap-4 pb-10">
             <Button disabled={isFinishedConversation} onClick={createNewChat}>
               <div className="flex items-center gap-2">
@@ -220,6 +225,23 @@ export default function Chat() {
           </form>
         </CardFooter>
       </Card>
+      <div className="flex items-center gap-2 justify-center pt-4">
+          <small style={{ color: '#6c757d' }}>Powered by</small>
+          <div className="flex items-center">
+            <Image
+              src={cmlicon}
+              alt="CML Icon"
+              width={50} // adjust as needed
+              height={50} // adjust as needed
+            />
+            <Image
+              src={cmltext}
+              alt="CML Text"
+              width={160} // adjust as needed
+              height={50} // adjust as needed
+            />
+          </div>
+          </div>
     </section>
   );
 }

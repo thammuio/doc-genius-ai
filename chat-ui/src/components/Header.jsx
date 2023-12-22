@@ -16,6 +16,7 @@ import {
   PopoverTrigger,
 } from "@components/ui/popover";
 import { Menu } from "lucide-react";
+import logo from '../images/cloudera-newco-logo.png';
 
 const menuItems = [
   {
@@ -48,12 +49,13 @@ const navigation = [
 export default function Header() {
   return (
     <header className="flex py-5 justify-between px-8 bg-[#132329]">
-      <Image
-        src="/cloudera-newco-logo.png"
-        alt="Cloudera Documentation"
-        width={180}
-        height={32}
-      />
+      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%' }}>
+        <Image
+          src={logo}
+          alt="Cloudera Documentation"
+          style={{ height: '50%', width: 'auto', objectFit: 'contain' }}
+        />
+      </div>
       <Popover>
         <PopoverTrigger>
           <button className="md:hidden">

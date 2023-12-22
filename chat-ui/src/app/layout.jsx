@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import './globals.css';
 import { Inter } from 'next/font/google';
 import { ChatProvider } from '../provider';
+import favicon from '../images/favicon.ico';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -16,7 +17,7 @@ export default function RootLayout({ children }) {
     <html lang="en" suppressHydrationWarning>
         <head>
         <title>Chat with Cloudera Documentation</title>
-        <link rel="shortcut icon" href="favicon.ico" />
+        <link rel="shortcut icon" href="https://www.cloudera.com/favicon.ico" />
         <meta
           name="description"
           content="Chat with Cloudera Documentation"

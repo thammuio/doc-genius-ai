@@ -112,14 +112,21 @@ tasks:
     environment_variables:
       TASK_TYPE: START_APPLICATION
 
-  - type: run_session
-    name: Setup Node, NPM, and YARN
+  - type: create_job
+    name: Build Chatbot UI
+    entity_label: setup_chatui
     script: chat-ui/setup.py
-    short_summary: Chatbot UI Env Setup
-    long_summary: Chatbot UI Env Setup
-    kernel: python3
+    arguments: None
+    short_summary: Setup Node, NPM, YARN Env Setup and Build UI
+    long_summary: Setup Node, NPM, YARN Env Setup and Build UI
     cpu: 2
     memory: 8
+    environment:
+      TASK_TYPE: CREATE/RUN_JOB
+
+  - type: run_job
+    entity_label: setup_chatui
+    short_summary: Build Chatbot UI
 
   - type: start_application
     name: Chatbot UI for Cloudera Docs

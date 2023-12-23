@@ -12,7 +12,7 @@ export default function BotCardContent({ children }) {
     <div className="flex gap-2 text-primary-black font-medium text-sm mb-4">
       <Avatar className="self-end h-6 w-6">
         <AvatarFallback>BOT</AvatarFallback>
-        <AvatarImage src={avatar} />
+        <AvatarImage src="https://raw.githubusercontent.com/thammuio/chat-cloudera-docs/main/chat-ui/src/images/cloudera-robot.png" />
       </Avatar>
       <div className="bg-zinc-100 max-w-xl p-3 rounded-r-2xl rounded-t-2xl leading-relaxed">
         {typeof children === "string" ? (

@@ -108,7 +108,7 @@ export default function Chat() {
       <Card className="max-w-5xl mx-auto h-full relative pb-10">
         <CardHeader ref={headerRef} className="pb-10">
           <CardTitle>{`I'm Cloudy McCloudFace!`}</CardTitle>
-          <CardDescription className="pb-10">
+          <CardDescription>
             Your quirky yet wise guide through{" "}
             <Link
               href="https://docs.cloudera.com"
@@ -117,6 +117,25 @@ export default function Chat() {
             >{`Cloudera's documentation`}</Link>{" "}
             universe!
           </CardDescription>
+          <hr style={{ width: '50%' }} />
+          <div className="flex items-center gap-2">
+          <small style={{ color: '#6c757d' }}>Powered by</small>
+          <div className="flex items-center">
+            <Image
+              src={cmlicon}
+              alt="CML Icon"
+              width={50} // adjust as needed
+              height={50} // adjust as needed
+            />
+            <Image
+              src={cmltext}
+              alt="CML Text"
+              width={160} // adjust as needed
+              height={50} // adjust as needed
+            />
+          </div>
+          </div>
+          <hr />
 
           <div className="md:absolute right-4 top-4 flex gap-4 pb-10">
             <Button disabled={isFinishedConversation} onClick={createNewChat}>
@@ -225,23 +244,6 @@ export default function Chat() {
           </form>
         </CardFooter>
       </Card>
-      <div className="flex items-center gap-2 justify-center pt-4">
-          <small style={{ color: '#6c757d' }}>Powered by</small>
-          <div className="flex items-center">
-            <Image
-              src={cmlicon}
-              alt="CML Icon"
-              width={50} // adjust as needed
-              height={50} // adjust as needed
-            />
-            <Image
-              src={cmltext}
-              alt="CML Text"
-              width={160} // adjust as needed
-              height={50} // adjust as needed
-            />
-          </div>
-          </div>
     </section>
   );
 }

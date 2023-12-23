@@ -17,7 +17,7 @@ export default function RootLayout({ children }) {
     <html lang="en" suppressHydrationWarning>
         <head>
         <title>Chat with Cloudera Documentation</title>
-        <link rel="shortcut icon" href="https://www.cloudera.com/favicon.ico" />
+        <link rel="shortcut icon" href="https://raw.githubusercontent.com/thammuio/chat-cloudera-docs/main/chat-ui/src/images/favicon.ico" />
         <meta
           name="description"
           content="Chat with Cloudera Documentation"

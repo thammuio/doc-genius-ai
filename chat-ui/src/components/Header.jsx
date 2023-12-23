@@ -51,8 +51,10 @@ export default function Header() {
     <header className="flex py-5 justify-between px-8 bg-[#132329]">
       <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%' }}>
         <Image
-          src={logo}
+          src="https://raw.githubusercontent.com/thammuio/chat-cloudera-docs/main/chat-ui/src/images/cloudera-newco-logo.png"
           alt="Cloudera Documentation"
+          width="100"
+          height="100"
           style={{ height: '50%', width: 'auto', objectFit: 'contain' }}
         />
       </div>

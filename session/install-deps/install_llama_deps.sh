@@ -21,4 +21,4 @@ export CMAKE_ARGS="-DLLAMA_CUBLAS=on -DCMAKE_CUDA_ARCHITECTURES=native"
 export FORCE_CMAKE=1
 
 ## Build llama-cpp-python w/ CUDA enablement
-pip install llama-cpp-python --force-reinstall --no-cache-dir
+pip install llama-cpp-python

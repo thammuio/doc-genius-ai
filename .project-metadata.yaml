@@ -104,7 +104,7 @@ tasks:
     name: Chatbot API for Cloudera Docs
     subdomain: chatbotapi
     script: app/main.py
-    short_summary: Create and start FastAPI
+    short_summary: Create and Start Chatbot API
     long_summary: Create and start API for Llama2 application. Ensure available GPUs for best performance. Remember to enable unauthenticated app access for external access to the UI.
     cpu: 4
     memory: 16
@@ -117,8 +117,8 @@ tasks:
     entity_label: setup_chatui
     script: chat-ui/setup.py
     arguments: None
-    short_summary: Setup Node, NPM, YARN Env Setup and Build UI
-    long_summary: Setup Node, NPM, YARN Env Setup and Build UI
+    short_summary: Setup Node, NPM, YARN Env Setup and Build Code
+    long_summary: Setup Node, NPM, YARN Env Setup and Build Code
     cpu: 2
     memory: 8
     environment:
@@ -126,13 +126,13 @@ tasks:
 
   - type: run_job
     entity_label: setup_chatui
-    short_summary: Build Chatbot UI
+    short_summary: Build Chatbot UI Code
 
   - type: start_application
     name: Chatbot UI for Cloudera Docs
     subdomain: chatbotui
     script: chat-ui/app.py
-    short_summary: Start UI application with Flask
+    short_summary: Start Chatbot UI
     long_summary: This task will run Flask app to serve the UI code
     cpu: 2
     memory: 8

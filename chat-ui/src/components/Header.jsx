@@ -16,7 +16,7 @@ import {
   PopoverTrigger,
 } from "@components/ui/popover";
 import { Menu } from "lucide-react";
-import logo from '../images/cloudera-newco-logo.png';
+import logo from '../images/cloudera-newco-logo.svg';
 
 const menuItems = [
   {
@@ -48,14 +48,12 @@ const navigation = [
 
 export default function Header() {
   return (
-    <header className="flex py-5 justify-between px-8 bg-[#132329]">
+    <header className="flex py-2 justify-between px-8 bg-[#132329]">
       <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%' }}>
         <Image
-          src="https://raw.githubusercontent.com/thammuio/chat-cloudera-docs/main/chat-ui/src/images/cloudera-newco-logo.png"
+          src={logo}
           alt="Cloudera Documentation"
-          width="100"
-          height="100"
-          style={{ height: '50%', width: 'auto', objectFit: 'contain' }}
+          style={{ height: '50%', width: 'auto', objectFit: 'contain', marginLeft: '100px' }}
         />
       </div>
       <Popover>

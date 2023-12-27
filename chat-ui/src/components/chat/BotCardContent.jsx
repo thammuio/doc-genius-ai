@@ -10,10 +10,12 @@ export default function BotCardContent({ children }) {
 
   return (
     <div className="flex gap-2 text-primary-black font-medium text-sm mb-4">
-      <Avatar className="self-end h-6 w-6">
-        <AvatarFallback>C</AvatarFallback>
-        <AvatarImage src={avatar} />
-      </Avatar>
+        <Image
+          src={avatar}
+          alt="C"
+          width={40} // adjust as needed
+          height={40} // adjust as needed
+        />
       <div className="bg-zinc-100 max-w-xl p-3 rounded-r-2xl rounded-t-2xl leading-relaxed">
         {typeof children === "string" ? (
           <Typing speed={10} onFinishedTyping={() => setIsTyping(false)}>

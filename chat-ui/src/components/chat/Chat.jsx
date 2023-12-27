@@ -117,7 +117,7 @@ export default function Chat() {
             >{`Cloudera's documentation`}</Link>{" "}
             universe!
           </CardDescription>
-          <hr style={{ width: '50%' }} />
+          <hr style={{ width: '62%' }} />
           <div className="flex items-center gap-2">
           <small style={{ color: '#6c757d' }}>Powered by</small>
           <div className="flex items-center">

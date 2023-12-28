@@ -4,6 +4,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@components/ui/avatar";
 import { ChatContext } from "@/provider";
 import Typing from "react-typing-animation";
 import avatar from '../../images/chat.svg';
+import Image from "next/image";
 
 export default function BotCardContent({ children }) {
   const { setIsTyping } = useContext(ChatContext);

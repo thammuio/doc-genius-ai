@@ -1,11 +1,11 @@
-name: Chatbot for Cloudera Documentation
+name: DocGenius AI Chatbot Powered by CML
 
 entries:
-  - title: Chatbot for Cloudera Documentation
+  - title: DocGenius AI Chatbot Powered by CML
     label: chat-cloudera-docs
-    short_description: Chatbot for Cloudera Documentation powered on Cloudera Machine Learning
+    short_description: Generative AI Chatbot for your Documentation powered by Cloudera Machine Learning
     long_description: >-
-      GenAI LLM Chatbot for Cloudera Documentation powered on Cloudera Machine Learning
+      GenAI LLM Chatbot for Cloudera Documentation powered by Cloudera Machine Learning
     image_path: >-
       https://raw.githubusercontent.com/thammuio/chat-cloudera-docs/main/images/chatbot-cloudera-docs.png
     tags:

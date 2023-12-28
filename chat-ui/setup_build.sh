@@ -1,6 +1,10 @@
 #!/bin/bash
 set -e
 
+
+echo "Getting latest code"
+git pull
+
 echo "Current Versions"
 node -v
 npm -v

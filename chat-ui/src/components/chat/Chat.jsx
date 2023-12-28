@@ -107,9 +107,9 @@ export default function Chat() {
     <section className="w-full h-[90%] my-auto px-4" ref={sectionRef}>
       <Card className="max-w-5xl mx-auto h-full relative pb-10">
         <CardHeader ref={headerRef} className="pb-10">
-          <CardTitle>{`I'm Cloudy McCloudFace!`}</CardTitle>
+          <CardTitle>{`DocGenius AI`}</CardTitle>
           <CardDescription>
-            Your quirky yet wise guide through{" "}
+          Generative AI Chatbot for{" "}
             <Link
               href="https://docs.cloudera.com"
               target="_blank"

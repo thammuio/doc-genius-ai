@@ -17,7 +17,7 @@ export default function RootLayout({ children }) {
     <html lang="en" suppressHydrationWarning>
         <head>
         <title>DocGenius AI Chatbot Powered by CML</title>
-        <link rel="shortcut icon" href="https://raw.githubusercontent.com/thammuio/chat-cloudera-docs/main/chat-ui/src/images/favicon.ico" />
+        <link rel="shortcut icon" href="https://raw.githubusercontent.com/thammuio/doc-genius-ai/main/chat-ui/src/images/favicon.ico" />
         <meta
           name="description"
           content="Generative AI Chatbot for your Documentation"
@@ -27,14 +27,14 @@ export default function RootLayout({ children }) {
           property="og:description"
           content="Generative AI Chatbot for your Documentation"
         />
-        <meta property="og:image" content="https://raw.githubusercontent.com/thammuio/chat-cloudera-docs/main/images/chatbot-cloudera-docs.png" />
+        <meta property="og:image" content="https://raw.githubusercontent.com/thammuio/doc-genius-ai/main/images/chatbot-cloudera-docs.png" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="DocGenius AI Chatbot" />
         <meta
           name="twitter:description"
           content="Generative AI Chatbot for your Documentation"
         />
-        <meta name="twitter:image" content="https://raw.githubusercontent.com/thammuio/chat-cloudera-docs/main/images/chatbot-cloudera-docs.png" />
+        <meta name="twitter:image" content="https://raw.githubusercontent.com/thammuio/doc-genius-ai/main/images/chatbot-cloudera-docs.png" />
       </head>
       <body className={`${inter.className} bg-slate-50`}>
         <ChatProvider>

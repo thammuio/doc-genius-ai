@@ -1,10 +1,10 @@
-name: DocGenius AI Chatbot Powered by CML
+name: DocGenius AI - Generative AI Chatbot
 description: |
-  Generative AI Chatbot for your Documentation
+  Generative AI Chatbot for your Documents Powered by CML
 
 author: Suri Nuthalapati
-specification_version: 0.3
-prototype_version: 0.3
+specification_version: 0.4
+prototype_version: 0.4
 date: "2023-11-22"
 
 environment_variables:
@@ -35,7 +35,7 @@ tasks:
   - type: run_session
     name: Validate GPU Availibility
     script: session/resource-validation/check_gpu_resources.py
-    short_summary: Check for GPU availibility. 
+    short_summary: Check for GPU availibility in your Environment
     long_summary: Check GPUs are enabled on this workspace and are currently schedulable.
     kernel: python3
     cpu: 2
@@ -44,8 +44,8 @@ tasks:
   - type: run_session
     name: Validate GPU Capability
     script: session/resource-validation/check_gpu_capability.py
-    short_summary: Check for GPU capability. 
-    long_summary: Check GPU device supports the CUDA capabilities required.
+    short_summary: Check for GPU capability in your Environment
+    long_summary: Check GPU device supports the CUDA capabilities required
     kernel: python3
     cpu: 4
     memory: 16
@@ -54,15 +54,15 @@ tasks:
   - type: run_session
     name: Install Dependencies
     script: session/install-deps/install_general_deps.py
-    short_summary: Install Dependencies
+    short_summary: Install Dependencies for your Project
     kernel: python3
     cpu: 4
     memory: 16
 
   - type: run_session
-    name: Install LLaMA Dependencies
-    script: session/install-deps/install_llama_deps.py
-    short_summary: Install LLaMA Dependencies
+    name: Install Model Dependencies
+    script: session/install-deps/install_model_deps.py
+    short_summary: Install LLM Model Dependencies
     kernel: python3
     cpu: 2
     memory: 8
@@ -82,7 +82,7 @@ tasks:
 
   - type: run_job
     entity_label: milvus_ingestion
-    short_summary: Populate Milvus Vector DB with documents embeddings
+    short_summary: Populate Milvus Vector DB with document embeddings
 
   - type: create_job
     name: Populate Pinecone Vector DB with documents embeddings
@@ -98,14 +98,14 @@ tasks:
 
   - type: run_job
     entity_label: pinecone_ingestion
-    short_summary: Populate Pinecone Vector DB with documents embeddings (This will only run if you set "PINECONE" as the Vector DB and provided valid parameters.)
+    short_summary: Populate Pinecone Vector DB with document embeddings (This will only run if you set "PINECONE" as the Vector DB and provided valid parameters.)
 
   - type: start_application
-    name: Chatbot API for Cloudera Docs
-    subdomain: chatbotapi
+    name: API for Chatbot - DocGenuis AI
+    subdomain: docgenius-api
     script: app/main.py
-    short_summary: Create and Start Chatbot API
-    long_summary: Create and start API for Llama2 application. Ensure available GPUs for best performance. Remember to enable unauthenticated app access for external access to the UI.
+    short_summary: Start API for DocGenuis AI Chatbot 
+    long_summary: Start and Publish API for DocGenius AI. Ensure available GPUs for best performance. Remember to enable unauthenticated app access for external access to the UI.
     cpu: 4
     memory: 16
     gpu: 1
@@ -113,7 +113,7 @@ tasks:
       TASK_TYPE: START_APPLICATION
 
   - type: create_job
-    name: Build Chatbot UI
+    name: Build Chatbot UI Code
     entity_label: setup_chatui
     script: chat-ui/setup.py
     arguments: None
@@ -129,11 +129,11 @@ tasks:
     short_summary: Build Chatbot UI Code
 
   - type: start_application
-    name: Chatbot UI for Cloudera Docs
-    subdomain: chatbotui
+    name: Frontend UI - DocGenius AI
+    subdomain: docgenius-ui
     script: chat-ui/app.py
-    short_summary: Start Chatbot UI
-    long_summary: This task will run Flask app to serve the UI code
+    short_summary: Start frontend UI for DocGenuis AI Chatbot 
+    long_summary: This task will run Flask app to serve the Chatbot Frontend UI. Remember to enable unauthenticated app access for external access to the UI.
     cpu: 2
     memory: 8
     environment_variables:

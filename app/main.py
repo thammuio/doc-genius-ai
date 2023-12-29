@@ -15,8 +15,8 @@ def create_app():
     CORSMiddleware,
     allow_origins = [
     "*",
-    f"https://chatbotapi.{CDSW_DOMAIN}",
-    f"https://chatbotui.{CDSW_DOMAIN}",
+    f"https://docgenius-api.{CDSW_DOMAIN}",
+    f"https://docgenius-ui.{CDSW_DOMAIN}",
     f"https://{CDSW_DOMAIN}",
     f"https://*.{CDSW_DOMAIN}",
     f"*.{CDSW_DOMAIN}",

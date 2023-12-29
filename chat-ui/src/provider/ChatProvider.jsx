@@ -24,8 +24,8 @@ export default function ChatProvider({ children }) {
   const [maxTokens, setMaxTokens] = useState(100);
   const [isFinishedConversation, setIsFinishedConversation] = useState(false);
   const domain = process.env.NEXT_PUBLIC_CHATBOT_API_DOMAIN;
-  const api = `https://chatbotapi.${domain}`;
-  const origin = `https://chatbotui.${domain}`;
+  const api = `https://docgenius-api.${domain}`;
+  const origin = `https://docgenius-ui.${domain}`;
 
 
   useEffect(() => {

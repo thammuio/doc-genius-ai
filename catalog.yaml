@@ -1,13 +1,13 @@
-name: DocGenius AI Chatbot Powered by CML
+name: DocGenius AI - Generative AI Chatbot Powered by CML
 
 entries:
-  - title: DocGenius AI Chatbot Powered by CML
-    label: chat-cloudera-docs
-    short_description: Generative AI Chatbot for your Documentation powered by Cloudera Machine Learning
+  - title: DocGenius AI - Generative AI Chatbot Powered by CML
+    label: doc-genius-ai
+    short_description: Generative AI Chatbot for your Documents powered by Cloudera Machine Learning
     long_description: >-
-      GenAI LLM Chatbot for Cloudera Documentation powered by Cloudera Machine Learning
+      Generative AI Chatbot for your Documents powered by Cloudera Machine Learning
     image_path: >-
-      https://raw.githubusercontent.com/thammuio/chat-cloudera-docs/main/images/chatbot-cloudera-docs.png
+      https://raw.githubusercontent.com/thammuio/doc-genius-ai/main/images/chatbot-cloudera-docs.png
     tags:
       - Cloudera
       - Cloudera MAchine Learning
@@ -15,5 +15,5 @@ entries:
       - LLM
       - Clouder Docs
       - Chatbot
-    git_url: "https://github.com/thammuio/chat-cloudera-docs.git"
+    git_url: "https://github.com/thammuio/doc-genius-ai.git"
     is_prototype: true        

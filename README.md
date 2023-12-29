@@ -1,4 +1,4 @@
-# Chatbot for Cloudera Documentation
+# DocGenius AI - Generative AI Chatbot for your Documents
 
 
 ## Building your custom knowledge base

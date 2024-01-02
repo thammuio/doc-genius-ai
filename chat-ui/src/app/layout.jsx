@@ -16,7 +16,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning>
         <head>
-        <title>DocGenius AI Chatbot Powered by CML</title>
+        <title>DocGenius AI | Generative AI Chatbot - powered by CML</title>
         <link rel="shortcut icon" href="https://raw.githubusercontent.com/thammuio/doc-genius-ai/main/chat-ui/src/images/favicon.ico" />
         <meta
           name="description"

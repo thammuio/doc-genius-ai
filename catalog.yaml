@@ -7,7 +7,7 @@ entries:
     long_description: >-
       Generative AI Chatbot for your Documents powered by Cloudera Machine Learning
     image_path: >-
-      https://raw.githubusercontent.com/thammuio/doc-genius-ai/main/images/chatbot-cloudera-docs.png
+      https://raw.githubusercontent.com/thammuio/doc-genius-ai/main/images/doc-genius-ai.png
     tags:
       - Cloudera
       - Cloudera MAchine Learning

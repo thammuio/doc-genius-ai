@@ -4,7 +4,8 @@ _scripts/
 notebooks/
 workflows/
 .github/workflows
-old-app.py
+scratchpad/
+extract_data/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

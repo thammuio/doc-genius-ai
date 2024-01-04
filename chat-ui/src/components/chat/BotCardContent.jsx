@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { Avatar, AvatarFallback, AvatarImage } from "@components/ui/avatar";
 import { ChatContext } from "@/provider";
 import Typing from "react-typing-animation";
-import avatar from '../../images/chat.svg';
+import avatar from '../../images/docgenius.svg';
 import Image from "next/image";
 
 export default function BotCardContent({ children }) {

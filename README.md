@@ -66,3 +66,29 @@ This requires pip packages and models from huggingface. Depending on your CML ne
 - [FastAPI](https://fastapi.tiangolo.com/)
 
 ## Deploying on CML
+
+
+# Code Structure
+doc-genius-ai/
+│
+├── app/                      # Application directory for API and Model Serving
+│   └── [contents not listed]
+├── chat-ui/                  # Directory for the chatbot UI in Next.js
+│   └── [contents not listed]
+├── data/                     # Data directory for storing datasets or data files
+│   └── [contents not listed]
+├── models/                   # Models directory for LLMs / ML models
+│   └── [contents not listed]
+├── pipeline/                 # Pipeline directory for data processing or workflow pipelines
+│   └── [contents not listed]
+├── session/                  # Scripts for CML Sessions and Validation Tasks
+│    └── [contents not listed]
+├── images/                   # Directory for storing project related images
+│   └── [contents not listed]
+├── api.md                    # Documentation for the APIs
+├── README.md                 # Detailed description of the project
+├── .gitignore                # Specifies intentionally untracked files to ignore
+├── catalog.yaml              # YAML file that contains descriptive information and metadata for the displaying the AMP projects in the CML Project Catalog.            
+├── .project-metadata.yaml    # Project metadata file that provides configuration and setup details
+├── cdsw-build.sh             # Script for building the Model dependencies
+└── requirements.txt          # Python dependencies for Model Serving

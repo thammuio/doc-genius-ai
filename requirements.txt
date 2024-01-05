@@ -1,0 +1,12 @@
+torch==2.0.1
+langchain
+typing-inspect==0.8.0
+typing_extensions==4.5.0
+tiktoken 
+transformers 
+accelerate 
+bitsandbytes 
+xformers 
+einops
+jinja2==3.1.2
+scipy

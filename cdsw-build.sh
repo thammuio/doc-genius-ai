@@ -1,3 +1,5 @@
+echo "Building CDSW Model Serving Deps"
+
 pip install -r requirements.txt
 
 # Install Model Dependencies

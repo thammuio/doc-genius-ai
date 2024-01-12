@@ -34,4 +34,7 @@ def get_embeddings(sentence):
         attention_mask = encoded_input['attention_mask']
         embeddings = mean_pooling(model_output, attention_mask)
     
-    return embeddings
+    # Reshape embeddings
+    reshaped_embeddings = embeddings.view(-1, 768)
+
+    return reshaped_embeddings

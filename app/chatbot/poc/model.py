@@ -13,8 +13,10 @@ from app.utils.constants import GEN_AI_MODEL_REPO, GEN_AI_MODEL_FILENAME
 
 # Pass through user input to LLM model with enhanced prompt and stop tokens
 def generate_response(json_input):
+    print("Downloading model from HuggingFace Hub...1")
     gen_ai_model_path = hf_hub_download(repo_id=GEN_AI_MODEL_REPO, filename=GEN_AI_MODEL_FILENAME)
 
+    print("Initiate Llama model...")
     llama2_model = Llama(
         model_path=gen_ai_model_path,
         n_gpu_layers=64,

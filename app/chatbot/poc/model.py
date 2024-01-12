@@ -6,7 +6,10 @@ from app.embeddings.chunk_utils import *
 import warnings
 warnings.filterwarnings("ignore")
 import json
-from app.utils.constants import GEN_AI_MODEL_REPO, GEN_AI_MODEL_FILENAME
+
+# Define the model 
+GEN_AI_MODEL_REPO = "TheBloke/Llama-2-13B-chat-GGUF"
+GEN_AI_MODEL_FILENAME = "llama-2-13b-chat.Q5_0.gguf"
 
 # Download and Load model from HuggingFace Hub
 print("Downloading model from HuggingFace Hub...")
@@ -37,10 +40,13 @@ def generate_response(json_input):
         }
         response = llama2_model(prompt=question_and_context, **params)
 
+        print("Response from Llama model: ")
+        print("--------------------------- ")
         print(response)
+        print("--------------------------- ")
 
         # answer = response['choices'][0]['text']
-        return response
+        return {"response": "Success"}
     
     
     except Exception as e:

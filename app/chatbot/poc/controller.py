@@ -4,10 +4,10 @@ from typing import Any, Union, Optional
 from fastapi import HTTPException
 from app.chatbot.load_model import load_llama_model
 from app.embeddings.chunk_utils import *
-from app.utils.constants import ENGINE_NAME
 import pinecone
 import json
 import requests
+from app.utils.model_access import get_model_access_key, MODEL_API_URL, HEADERS
 
 if os.getenv('VECTOR_DB').upper() == "MILVUS":
     from pymilvus import connections, Collection
@@ -58,19 +58,12 @@ def poc_gpu_rag_llama_2_13b_chat(prompt, temperature, max_tokens, selected_vecto
         context_chunk = get_nearest_chunk_from_pinecone_vectordb(index, vdb_question)
 
     # Step 2: Call the relavent Model in Model Serving
-    CDSW_DOMAIN = os.environ["CDSW_DOMAIN"]
-    CDSW_APIV2_KEY = os.environ["CDSW_APIV2_KEY"]
-    CDSW_PROJECT_ID = os.environ["CDSW_PROJECT_ID"]
-    HEADERS = {'Content-Type': 'application/json'}
-    API_URL = f'https://modelservice.{CDSW_DOMAIN}/model'
-    WORKSPACE_DOMAIN = f"https://{CDSW_DOMAIN}"
-    CML_CLIENT = cmlapi.default_client(WORKSPACE_DOMAIN, CDSW_APIV2_KEY)
-    model_to_call = CML_CLIENT.list_models(CDSW_PROJECT_ID, search_filter=json.dumps({"name": "POC LLM Model"}))
-    MODEL_ACCESS_KEY = model_to_call.models[0].access_key   
-    
+    MODEL_ACCESS_KEY = get_model_access_key({"name": "POC LLM Model"})
+
     question = {'prompt': prompt, "temperature": temperature, "max_tokens": max_tokens, "context": context_chunk, "user": user}
     data = json.dumps({'accessKey': MODEL_ACCESS_KEY, 'request': question})
-    response = requests.post(API_URL, data = data, headers = HEADERS)
+    response = requests.post(MODEL_API_URL, data = data, headers = HEADERS)
+    
     try:
         response_json = response.json()
         return response_json.get('response')

@@ -44,7 +44,7 @@ async def chat_endpoint(payload: dict):
     if model_method is None:
         raise HTTPException(status_code=400, detail="Model not supported / Work in Progress")
 
-    # Call the function with the parameters
+    # Call the model function with the parameters
     return model_method(prompt, temperature, max_tokens, selected_vector_db, user)
 
 

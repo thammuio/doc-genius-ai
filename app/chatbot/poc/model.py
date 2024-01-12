@@ -18,7 +18,7 @@ llama2_model = load_llama_model()
 def generate_response(json_input):
     try:
         data = json.loads(json_input)
-        question = "Answer this question based on given context: " + data['promt'] + " "
+        question = "Answer this question based on given context: " + data['prompt'] + " "
         context = " Here is the context: " + str(data['context'])
         question_and_context = question + context
 
@@ -29,7 +29,7 @@ def generate_response(json_input):
         response = llama2_model(prompt=question_and_context, **params)
 
         answer = response['choices'][0]['text']
-        return {"response": answer}
+        return {"answer": answer}
     
     
     except Exception as e:

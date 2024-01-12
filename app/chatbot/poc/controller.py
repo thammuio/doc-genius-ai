@@ -6,6 +6,9 @@ from app.chatbot.load_model import load_llama_model
 from app.embeddings.chunk_utils import *
 from app.utils.constants import ENGINE_NAME
 import pinecone
+import json
+import requests
+
 if os.getenv('VECTOR_DB').upper() == "MILVUS":
     from pymilvus import connections, Collection
     import app.utils.vectordb.start_milvus as vector_db

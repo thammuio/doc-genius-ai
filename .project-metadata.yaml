@@ -120,8 +120,12 @@ tasks:
     examples:
       - request:
           question: What is Cloudera Machine Learning?
+          temperature: 1
+          max_tokens: 100
+          context: Cloudera Machine Learning is a platform for machine learning and analytics that runs in the public cloud or on-premises.
+          user: genius
     target_file_path: app/chatbot/poc/model.py
-    target_function_name: get_answer
+    target_function_name: generate_response
     kernel: python3
 
   - type: deploy_model

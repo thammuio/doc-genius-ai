@@ -20,7 +20,7 @@ def check_gpu_status() -> dict[str, str]:
 chat_router = APIRouter()
 
 @chat_router.post("/chat")
-def post_generate_text(data: TextInput) -> dict[str, str]:
+def model_generate_text(data: TextInput) -> dict[str, str]:
     return generate_text(data)
 
 

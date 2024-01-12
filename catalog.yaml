@@ -11,9 +11,9 @@ entries:
     tags:
       - Cloudera
       - Cloudera MAchine Learning
-      - GenAI
+      - Generative AI
       - LLM
-      - Clouder Docs
+      - Trust Your Data
       - Chatbot
     git_url: "https://github.com/thammuio/doc-genius-ai.git"
     is_prototype: true        

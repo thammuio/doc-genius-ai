@@ -4,7 +4,7 @@ POST /chat
 
 ```json
 {
-    "inputs": "What is Cloudera Machine Learning?",
+    "prompt": "What is Cloudera Machine Learning?",
     "parameters": {
         "temperature": 1,
         "max_tokens": 10,
@@ -54,3 +54,11 @@ GET /status
 }
 ```
 
+# Model Serving
+
+{
+    "inputs": "What is Cloudera Machine Learning?",
+    "temperature": 1,
+    "max_tokens": 10,
+    "context": "Cloudera Docs"
+}

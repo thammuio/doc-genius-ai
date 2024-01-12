@@ -3,9 +3,9 @@ description: |
   Generative AI Chatbot for your Documents Powered by CML
 
 author: Suri Nuthalapati
-specification_version: 0.4
-prototype_version: 0.4
-date: "2023-11-22"
+specification_version: 0.6
+prototype_version: 0.6
+date: "2023-01-04"
 
 environment_variables:
   VECTOR_DB:
@@ -100,6 +100,32 @@ tasks:
     entity_label: pinecone_ingestion
     short_summary: Populate Pinecone Vector DB with document embeddings (This will only run if you set "PINECONE" as the Vector DB and provided valid parameters.)
 
+  - type: create_model
+    name: POC LLM Model
+    entity_label: poc_llm
+    description: POC LLM Model
+    short_summary: Deploying a POC LLM Model that runs CML Model
+    default_resources:
+    cpu: 4
+    memory: 32
+    gpu: 1
+
+  - type: build_model
+    entity_label: poc_llm
+    comment: POC LLM Model
+    examples:
+      - request:
+          question: What is Cloudera Machine Learning?
+    target_file_path: app/chatbot/poc/model.py
+    target_function_name: get_answer
+    kernel: python3
+
+  - type: deploy_model
+    entity_label: poc_llm
+    cpu: 4
+    memory: 32
+    gpu: 1
+
   - type: start_application
     name: API for Chatbot - DocGenuis AI
     subdomain: docgenius-api
@@ -111,6 +137,7 @@ tasks:
     gpu: 1
     environment_variables:
       TASK_TYPE: START_APPLICATION
+    bypass_authentication: true
 
   - type: create_job
     name: Build Chatbot UI Code
@@ -138,4 +165,12 @@ tasks:
     memory: 8
     environment_variables:
       TASK_TYPE: START_APPLICATION
+    bypass_authentication: true
 
+  - type: run_session
+    name: Configure some features and flags via cmlapi after deployment
+    script: session/cmlapi/apply_fix_conf.py
+    short_summary: Configure some features and flags via cmlapi after deployment
+    kernel: python3
+    cpu: 2
+    memory: 8

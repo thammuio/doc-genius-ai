@@ -1,7 +1,6 @@
 from fastapi import APIRouter
 from fastapi import HTTPException
 from fastapi.responses import RedirectResponse
-from app.utils.sanity import status_gpu_check
 from app.api.get_configs import get_settings_data
 from app.chatbot.poc.controller import poc_gpu_rag_llama_2_13b_chat 
 
@@ -14,8 +13,8 @@ def root():
     return RedirectResponse(url="/status")
 
 @status_router.get("/status")
-def check_gpu_status() -> dict[str, str]:
-    return status_gpu_check()
+def check_api_status() -> dict[str, str]:
+    return {"api_status":"Healthy"}
 
 # Chat
 # Map the model names to the functions

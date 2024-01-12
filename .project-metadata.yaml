@@ -25,11 +25,24 @@ environment_variables:
     default: "$CDSW_DOMAIN"
     description: "Required for building UI application: Enter the domain for the Chatbot API. This is the same as the CDSW_DOMAIN environment variable."
     required: true
+  PROJECT_GIT_BRANCH:
+    default: "main"
+    description: "Enter the branch name for the git repo. The default is 'main' and can be changed to identify variations for organizations with multiple branches."
 
 runtimes:
   - editor: JupyterLab
     kernel: Python 3.9
     edition: Nvidia GPU
+
+tasks:
+  - type: run_session
+    name: Select the Git Branch
+    script: session/resource-validation/check_gpu_resources.py
+    short_summary: Check for GPU availibility in your Environment
+    long_summary: Check GPUs are enabled on this workspace and are currently schedulable.
+    kernel: python3
+    cpu: 2
+    memory: 8
 
 tasks:
   - type: run_session

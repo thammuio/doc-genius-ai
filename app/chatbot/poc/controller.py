@@ -1,7 +1,5 @@
 from pydantic import BaseModel
 from typing import Any, Union, Optional
-from fastapi import HTTPException
-from app.chatbot.load_model import load_llama_model
 from app.embeddings.chunk_utils import *
 import pinecone
 import json

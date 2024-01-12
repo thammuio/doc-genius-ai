@@ -1,7 +1,7 @@
 accelerate
 bitsandbytes 
 click
-cmlapi
+cmlutils
 datasets
 einops
 fastapi

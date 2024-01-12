@@ -8,8 +8,6 @@ from app.embeddings.chunk_utils import *
 import warnings
 warnings.filterwarnings("ignore")
 import json
-from llama_cpp import Llama
-from huggingface_hub import hf_hub_download
 from app.utils.constants import GEN_AI_MODEL_REPO, GEN_AI_MODEL_FILENAME
 
 

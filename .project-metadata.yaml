@@ -37,9 +37,9 @@ runtimes:
 tasks:
   - type: run_session
     name: Select the Git Branch
-    script: session/resource-validation/check_gpu_resources.py
-    short_summary: Check for GPU availibility in your Environment
-    long_summary: Check GPUs are enabled on this workspace and are currently schedulable.
+    script: session/other/select_git_branch.py
+    short_summary: Select the Git Branch
+    long_summary: Select the Git Branch. The default is 'main' and can be changed to identify variations for organizations with multiple branches.
     kernel: python3
     cpu: 2
     memory: 8

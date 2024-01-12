@@ -2,8 +2,6 @@ from llama_cpp import Llama
 from huggingface_hub import hf_hub_download
 from pydantic import BaseModel
 from typing import Any, Union, Optional
-from fastapi import HTTPException
-from app.chatbot.poc.load_model import load_llama_model
 from app.embeddings.chunk_utils import *
 import warnings
 warnings.filterwarnings("ignore")

@@ -2,7 +2,6 @@ from fastapi import APIRouter
 from fastapi import HTTPException
 from fastapi.responses import RedirectResponse
 from app.utils.sanity import status_gpu_check
-from app.chatbot.model import TextInput, generate_text
 from app.api.get_configs import get_settings_data
 from app.chatbot.poc.controller import poc_gpu_rag_llama_2_13b_chat 
 

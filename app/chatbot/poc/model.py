@@ -28,7 +28,11 @@ print("Model loaded successfully!")
 def generate_response(json_input):
 
     try:
-        data = json.loads(json_input)
+        print("Input from user: ")
+        print(json_input)
+        # Assuming json_input is your dictionary
+        json_input_str = json.dumps(json_input)
+        data = json.loads(json_input_str)
         print(data)
         question = "Answer this question based on given context: " + data['prompt'] + " "
         context = " Here is the context: " + str(data['context'])

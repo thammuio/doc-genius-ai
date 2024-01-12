@@ -41,7 +41,7 @@ def poc_gpu_rag_llama_2_13b_chat(prompt, temperature, max_tokens, selected_vecto
     vdb_question = prompt
     
     if selected_vector_db == "MILVUS":
-        context_chunk = get_nearest_ch/.unk_from_milvus_vectordb(vector_db_collection, vdb_question)
+        context_chunk = get_nearest_chunk_from_milvus_vectordb(vector_db_collection, vdb_question)
         vector_db_collection.release()
 
     if selected_vector_db == "PINECONE":

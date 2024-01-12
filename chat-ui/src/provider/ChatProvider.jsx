@@ -66,12 +66,14 @@ export default function ChatProvider({ children }) {
 
     try {
       const body = JSON.stringify({
-        inputs: message,
+        prompt: message,
         parameters: {
           temperature,
           max_tokens: maxTokens,
-          model,
         },
+        model,
+        "selected_vector_db": "MILVUS",
+        "user": "genius"
       });
 
       console.log("Sending request with body:", body);

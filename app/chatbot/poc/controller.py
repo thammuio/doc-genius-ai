@@ -1,4 +1,3 @@
-from llama_cpp import Llama
 from pydantic import BaseModel
 from typing import Any, Union, Optional
 from fastapi import HTTPException

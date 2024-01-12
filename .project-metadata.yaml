@@ -59,15 +59,6 @@ tasks:
     cpu: 4
     memory: 16
 
-  - type: run_session
-    name: Install Model Dependencies
-    script: session/install-deps/install_model_deps.py
-    short_summary: Install LLM Model Dependencies
-    kernel: python3
-    cpu: 2
-    memory: 8
-    gpu: 1
-
   - type: create_job
     name: Populate Milvus Vector DB with documents embeddings
     entity_label: milvus_ingestion

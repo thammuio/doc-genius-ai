@@ -1,8 +1,10 @@
 from fastapi import APIRouter
+from fastapi import HTTPException
 from fastapi.responses import RedirectResponse
 from app.utils.sanity import status_gpu_check
 from app.chatbot.model import TextInput, generate_text
 from app.api.get_configs import get_settings_data
+from app.chatbot.poc.controller import poc_gpu_rag_llama_2_13b_chat 
 
 
 # API Status
@@ -17,11 +19,33 @@ def check_gpu_status() -> dict[str, str]:
     return status_gpu_check()
 
 # Chat
+# Map the model names to the functions
+model_methods = {
+    "poc/gpu/rag/llama-2-13b-chat": poc_gpu_rag_llama_2_13b_chat
+    # Add more models here
+}
+
 chat_router = APIRouter()
 
 @chat_router.post("/chat")
-def model_generate_text(data: TextInput) -> dict[str, str]:
-    return generate_text(data)
+async def chat_endpoint(payload: dict):
+    selected_model = payload.get("selected_model")
+    prompt = payload.get("prompt")
+    parameters = payload.get("parameters")
+    temperature = parameters.get("temperature")
+    max_tokens = parameters.get("max_tokens")
+    selected_vector_db = payload.get("selected_vector_db")
+    user = payload.get("user")
+
+    # Get the function from the dictionary
+    model_method = model_methods.get(selected_model)
+
+    # If the model is not supported, return a 400 error
+    if model_method is None:
+        raise HTTPException(status_code=400, detail="Model not supported / Work in Progress")
+
+    # Call the function with the parameters
+    return model_method(prompt, temperature, max_tokens, selected_vector_db, user)
 
 
 # Settings

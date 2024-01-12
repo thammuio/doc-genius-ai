@@ -1,1 +1,4 @@
-pip install --no-cache-dir -r requirements.txt
+pip install -r requirements.txt
+
+# Install Model Dependencies
+./session/install-deps/install_llama_deps.sh

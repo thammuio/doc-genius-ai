@@ -6,6 +6,9 @@ workflows/
 .github/workflows
 scratchpad/
 extract_data/
+.vscode/
+.metals/
+llm-resource-calculator-for-cml/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

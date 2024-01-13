@@ -6,14 +6,23 @@ from app.embeddings.chunk_utils import *
 import warnings
 warnings.filterwarnings("ignore")
 import json
+import os
+
 
 # Define the model 
 GEN_AI_MODEL_REPO = "TheBloke/Llama-2-13B-chat-GGUF"
 GEN_AI_MODEL_FILENAME = "llama-2-13b-chat.Q5_0.gguf"
 
-# Download and Load model from HuggingFace Hub
-print("Downloading model from HuggingFace Hub...")
-gen_ai_model_path = hf_hub_download(repo_id=GEN_AI_MODEL_REPO, filename=GEN_AI_MODEL_FILENAME)
+# Only download the model if it's not already downloaded
+# Define the path where the model would be stored
+gen_ai_model_path = os.path.join(os.path.dirname(__file__), GEN_AI_MODEL_FILENAME)
+
+# Only download the model if it's not already downloaded
+if not os.path.exists(gen_ai_model_path):
+    print("Downloading model from HuggingFace Hub...")
+    gen_ai_model_path = hf_hub_download(repo_id=GEN_AI_MODEL_REPO, filename=GEN_AI_MODEL_FILENAME)
+else:
+    print("Model already downloaded!")
 
 print("Initiate Llama model...")
 llama2_model = Llama(
@@ -33,6 +42,7 @@ def generate_response(json_input):
         # Assuming json_input is your dictionary
         json_input_str = json.dumps(json_input)
         data = json.loads(json_input_str)
+        print("json.loads:")
         print(data)
         question = "Answer this question based on given context: " + data['prompt'] + " "
         context = " Here is the context: " + str(data['context'])

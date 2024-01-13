@@ -71,7 +71,7 @@ export default function ChatProvider({ children }) {
           temperature,
           max_tokens: maxTokens,
         },
-        model,
+        "selected_model": model.name,
         "selected_vector_db": "MILVUS",
         "user": "genius"
       });

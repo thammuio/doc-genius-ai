@@ -3,6 +3,7 @@ import pinecone
 import json
 import requests
 from app.utils.model_access import get_model_access_key, MODEL_API_URL, HEADERS
+import os
 
 if os.getenv('VECTOR_DB').upper() == "MILVUS":
     from pymilvus import connections, Collection

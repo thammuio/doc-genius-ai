@@ -15,7 +15,8 @@ GEN_AI_MODEL_FILENAME = "llama-2-13b-chat.Q5_0.gguf"
 
 # Only download the model if it's not already downloaded
 # Define the path where the model would be stored
-gen_ai_model_path = os.path.join(os.path.dirname(__file__), GEN_AI_MODEL_FILENAME)
+# Define the path where the model would be stored
+gen_ai_model_path = os.path.join(os.getcwd(), GEN_AI_MODEL_FILENAME)
 
 # Only download the model if it's not already downloaded
 if not os.path.exists(gen_ai_model_path):

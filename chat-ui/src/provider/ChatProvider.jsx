@@ -91,6 +91,11 @@ export default function ChatProvider({ children }) {
 
       console.log("Received response with status:", response.status);
 
+      if (!response.ok) { // Check if response status is not 200
+        handleAssistantResponse({ content: 'Something went wrong, please try again later' });
+        return; // Stop execution
+      }
+
       const data = await response.json();
 
       handleAssistantResponse({ content: data.response });

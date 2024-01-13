@@ -1,8 +1,5 @@
 from llama_cpp import Llama
 from huggingface_hub import hf_hub_download
-from pydantic import BaseModel
-from typing import Any, Union, Optional
-from app.embeddings.chunk_utils import *
 import warnings
 warnings.filterwarnings("ignore")
 import json

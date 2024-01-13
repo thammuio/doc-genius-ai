@@ -1,5 +1,3 @@
-from pydantic import BaseModel
-from typing import Any, Union, Optional
 from app.embeddings.chunk_utils import *
 import pinecone
 import json

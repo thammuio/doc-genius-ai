@@ -1,5 +1,4 @@
 import torch
-import torch.nn.functional as F
 from transformers import AutoTokenizer, AutoModel
 
 from app.utils.constants import EMBEDDING_MODEL_REPO

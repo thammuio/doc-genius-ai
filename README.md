@@ -1,4 +1,45 @@
 # DocGenius AI - Generative AI Chatbot for your Documents
+<p align="center">
+  <img src="images/doc-genius-ai-alt.png" alt="Doc Genius AI">
+</p>
+
+## Architecture
+<p align="center">
+  <img src="images/slides/docgenius-arch.png" alt="DocGenius Architecture">
+</p>
+
+### RAG Implementation:
+
+<p align="center">
+  <img src="images/slides/docgenius-rag.png" alt="DocGenius RAG Architecture">
+</p>
+
+## Chatbot
+<p align="center">
+  <img src="images/slides/chatbot-workflow.png" alt="DocGenius UI workflow">
+</p>
+
+<p align="center">
+  <img src="images/slides/chatbot-qa.png" alt="DocGenius UI Q&A">
+</p>
+
+## Deployment
+### Cloudera AMP
+<p align="center">
+  <img src="images/slides/docgenius-amp.png" alt="DocGenius as Cloudera AMP">
+</p>
+
+### Applications
+<p align="center">
+  <img src="images/slides/docgenius-apps.png" alt="DocGenius RAG Architecture">
+</p>
+
+### Model Serving
+<p align="center">
+  <img src="images/slides/docgenius-modelserve.png" alt="DocGenius RAG Architecture">
+</p>
+
+
 
 
 ## Building your custom knowledge base

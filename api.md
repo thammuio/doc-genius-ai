@@ -69,8 +69,8 @@ GET /status
 {
     "prompt": "What is Cloudera Machine Learning?",
     "temperature": 1,
-    "max_tokens": 10,
-    "context": "Cloudera Docs",
+    "max_tokens": 200,
+    "context": "Cloudera Machine Learning is a platform for machine learning and analytics that runs in the public cloud or on-premises.",
     "user": "genius"
 }
 

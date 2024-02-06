@@ -71,6 +71,7 @@ tasks:
     kernel: python3
     cpu: 4
     memory: 16
+    gpu: 1
 
   - type: create_job
     name: Populate Milvus Vector DB with documents embeddings

@@ -53,7 +53,7 @@ export default function Header() {
         <Image
           src={logo}
           alt="Cloudera Documentation"
-          style={{ height: '50%', width: 'auto', objectFit: 'contain', marginLeft: '100px' }}
+          style={{ height: '50%', width: 'auto', objectFit: 'contain' }}
         />
       </div>
       <Popover>

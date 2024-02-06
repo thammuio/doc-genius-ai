@@ -10,24 +10,20 @@ import os
 GEN_AI_MODEL_REPO = "TheBloke/Llama-2-13B-chat-GGUF"
 GEN_AI_MODEL_FILENAME = "llama-2-13b-chat.Q5_0.gguf"
 
-# Only download the model if it's not already downloaded
-# Define the path where the model would be stored
-# Define the path where the model would be stored
-gen_ai_model_path = os.path.join(os.getcwd(), GEN_AI_MODEL_FILENAME)
-
-# Only download the model if it's not already downloaded
-if not os.path.exists(gen_ai_model_path):
-    print("Downloading model from HuggingFace Hub...")
-    gen_ai_model_path = hf_hub_download(repo_id=GEN_AI_MODEL_REPO, filename=GEN_AI_MODEL_FILENAME)
-else:
-    print("Model already downloaded!")
-
 print("Initiate Llama model...")
-llama2_model = Llama(
-    model_path=gen_ai_model_path,
-    n_gpu_layers=64,
-    n_ctx=2000
-)
+def load_llama_model():
+    gen_ai_model_path = hf_hub_download(repo_id=GEN_AI_MODEL_REPO, filename=GEN_AI_MODEL_FILENAME)
+    print("path is:")
+    print(gen_ai_model_path)
+    llama2_model = Llama(
+        model_path=gen_ai_model_path,
+        n_gpu_layers=20,
+        n_ctx=20
+    )
+    return llama2_model
+
+
+llama2_model = load_llama_model()
 
 print("Model loaded successfully!")
 
@@ -52,9 +48,12 @@ def generate_response(json_input):
         }
         response = llama2_model(prompt=question_and_context, **params)
 
+        model_out = response['choices'][0]['text']
+
         print("Response from Llama model: ")
-        print("--------------------------- ")
         print(response)
+        print("--------------------------- ")
+        print(model_out)
         print("--------------------------- ")
 
         # answer = response['choices'][0]['text']

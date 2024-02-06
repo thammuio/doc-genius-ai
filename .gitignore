@@ -1,7 +1,6 @@
 # TODO
 scripts/
 _scripts/
-notebooks/
 workflows/
 .github/workflows
 scratchpad/
@@ -9,6 +8,7 @@ extract_data/
 .vscode/
 .metals/
 llm-resource-calculator-for-cml/
+milvus-data/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

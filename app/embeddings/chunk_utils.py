@@ -1,4 +1,5 @@
 from sentence_transformers import SentenceTransformer
+import os
 from app.utils.constants import EMBEDDING_MODEL_REPO
 import app.embeddings.embeddings_utils as model_embedding
 

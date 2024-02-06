@@ -1,14 +1,12 @@
 import torch
+import torch.nn.functional as F
 from transformers import AutoTokenizer, AutoModel
 
 from app.utils.constants import EMBEDDING_MODEL_REPO
 
-# Run on CPU
-device = torch.device("cpu")
-
 # Load the model stored in models/embedding-model
 tokenizer = AutoTokenizer.from_pretrained(EMBEDDING_MODEL_REPO)
-model = AutoModel.from_pretrained(EMBEDDING_MODEL_REPO).to(device)
+model = AutoModel.from_pretrained(EMBEDDING_MODEL_REPO)
 
 # Mean Pooling - Take attention mask into account for correct averaging
 def mean_pooling(model_output, attention_mask):
@@ -25,15 +23,16 @@ def get_embeddings(sentence):
     # Default model will truncate the document and only gets embeddings of the first 256 tokens.
     # Semantic search will only be effective on these first 256 tokens.
     # Context loading in 3_app context will still include the ENTIRE document file
-    encoded_input = tokenizer(sentences, padding='max_length', truncation=True, return_tensors='pt').to(device)
+    encoded_input = tokenizer(sentences, padding='max_length', truncation=True, return_tensors='pt')
 
     # Compute token embeddings
     with torch.no_grad():
         model_output = model(**encoded_input)
-        attention_mask = encoded_input['attention_mask']
-        embeddings = mean_pooling(model_output, attention_mask)
-    
-    # Reshape embeddings
-    reshaped_embeddings = embeddings.view(-1, 768)
 
-    return reshaped_embeddings
+    # Perform pooling
+    sentence_embeddings = mean_pooling(model_output, encoded_input['attention_mask'])
+
+    # Normalize embeddings
+    sentence_embeddings = F.normalize(sentence_embeddings, p=2, dim=1)
+
+    return (sentence_embeddings.tolist()[0])

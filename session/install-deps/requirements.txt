@@ -19,3 +19,4 @@ pinecone-client
 sentence-transformers
 setuptools
 flask
+cmlapi

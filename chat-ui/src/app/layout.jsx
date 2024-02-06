@@ -22,19 +22,19 @@ export default function RootLayout({ children }) {
           name="description"
           content="Generative AI Chatbot for your Documentation"
         />
-        <meta property="og:title" content="DocGenius AI Chatbot Powered by Cloudera Machine Learning" />
+        <meta property="og:title" content="DocGenius AI | Generative AI Chatbot - powered by CML" />
         <meta
           property="og:description"
           content="Generative AI Chatbot for your Documentation"
         />
-        <meta property="og:image" content="https://raw.githubusercontent.com/thammuio/doc-genius-ai/main/images/chatbot-cloudera-docs.png" />
+        <meta property="og:image" content="https://raw.githubusercontent.com/thammuio/doc-genius-ai/main/images/doc-genius-ai.png" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="DocGenius AI Chatbot" />
+        <meta name="twitter:title" content="DocGenius AI" />
         <meta
           name="twitter:description"
-          content="Generative AI Chatbot for your Documentation"
+          content="Generative AI Chatbot for your Documentation - powered by CML"
         />
-        <meta name="twitter:image" content="https://raw.githubusercontent.com/thammuio/doc-genius-ai/main/images/chatbot-cloudera-docs.png" />
+        <meta name="twitter:image" content="https://raw.githubusercontent.com/thammuio/doc-genius-ai/main/images/doc-genius-ai.png" />
       </head>
       <body className={`${inter.className} bg-slate-50`}>
         <ChatProvider>

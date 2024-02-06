@@ -1,4 +1,45 @@
 # DocGenius AI - Generative AI Chatbot for your Documents
+<p align="center">
+  <img src="images/doc-genius-ai-alt.png" alt="Doc Genius AI">
+</p>
+
+## Architecture
+<p align="center">
+  <img src="images/slides/docgenius-arch.png" alt="DocGenius Architecture">
+</p>
+
+### RAG Implementation:
+
+<p align="center">
+  <img src="images/slides/docgenius-rag.png" alt="DocGenius RAG Architecture">
+</p>
+
+## Chatbot
+<p align="center">
+  <img src="images/slides/chatbot-workflow.png" alt="DocGenius UI workflow">
+</p>
+
+<p align="center">
+  <img src="images/slides/chatbot-qa.png" alt="DocGenius UI Q&A">
+</p>
+
+## Deployment
+### Cloudera AMP
+<p align="center">
+  <img src="images/slides/docgenius-amp.png" alt="DocGenius as Cloudera AMP">
+</p>
+
+### Applications
+<p align="center">
+  <img src="images/slides/docgenius-apps.png" alt="DocGenius RAG Architecture">
+</p>
+
+### Model Serving
+<p align="center">
+  <img src="images/slides/docgenius-modelserve.png" alt="DocGenius RAG Architecture">
+</p>
+
+
 
 
 ## Building your custom knowledge base
@@ -38,6 +79,9 @@
 #### Recommended Runtime
 JupyterLab - Python 3.9 - Nvidia GPU - 2023.08
 
+#### AMP Docs
+https://docs.cloudera.com/machine-learning/cloud/applied-ml-prototypes/topics/ml-amp-project-spec.html
+
 #### Resource Requirements
 This creates the following workloads with resource requirements:
 - CML Session: `2 CPU, 16GB MEM`
@@ -69,26 +113,31 @@ This requires pip packages and models from huggingface. Depending on your CML ne
 
 
 # Code Structure
+```
 doc-genius-ai/
-│
-├── app/                      # Application directory for API and Model Serving
-│   └── [contents not listed]
-├── chat-ui/                  # Directory for the chatbot UI in Next.js
-│   └── [contents not listed]
-├── data/                     # Data directory for storing datasets or data files
-│   └── [contents not listed]
-├── models/                   # Models directory for LLMs / ML models
-│   └── [contents not listed]
-├── pipeline/                 # Pipeline directory for data processing or workflow pipelines
-│   └── [contents not listed]
-├── session/                  # Scripts for CML Sessions and Validation Tasks
-│    └── [contents not listed]
-├── images/                   # Directory for storing project related images
-│   └── [contents not listed]
-├── api.md                    # Documentation for the APIs
-├── README.md                 # Detailed description of the project
-├── .gitignore                # Specifies intentionally untracked files to ignore
-├── catalog.yaml              # YAML file that contains descriptive information and metadata for the displaying the AMP projects in the CML Project Catalog.            
-├── .project-metadata.yaml    # Project metadata file that provides configuration and setup details
-├── cdsw-build.sh             # Script for building the Model dependencies
-└── requirements.txt          # Python dependencies for Model Serving
+├── app/                      	# Application directory for API and Model Serving
+│   └── [..subdirs..]
+│   └── chatbot/		# has the model serving python files for RAG, Prompt, Fine-tuning models
+│   └── main.py		# main.py file to start the API
+├── chat-ui/                  	# Directory for the chatbot UI in Next.js
+│   └── [..subdirs..]
+│   └── app.py 		# app.py file to serve  build files in .next directory via Flask
+├── pipeline/                 	# Pipeline directory for data processing or workflow pipelines and vector load
+├── data/                     	# Data directory for storing datasets or data files
+├── models/                   	# Models directory for LLMs / ML models
+├── session/                  	# Scripts for CML Sessions and Validation Tasks
+├── images/                   	# Directory for storing project related images
+├── api.md                    	# Documentation for the APIs
+├── README.md         	# Detailed description of the project
+├── .gitignore                	# Specifies intentionally untracked files to ignore
+├── catalog.yaml          	# YAML file that contains descriptive information and metadata for the displaying the AMP projects in the CML Project Catalog.           
+├─ .project-metadata.yaml    # Project metadata file that provides configuration and setup details
+├── cdsw-build.sh             	# Script for building the Model dependencies
+└── requirements.txt          	# Python dependencies for Model Serving
+```
+
+# Interim Fixes
+1. Increase Ephemeral Storage Limit by navigating to CML Workspace -> Site Administration -> Settings -> Ephemeral Storage (in GB) and set it to a value >= 50
+  - When a CML model is created, the model is loaded in the scratch space of a pod, LLM models are larger than the default 10 GB which causes issues during deployment.
+
+2. Site Administration > Security > Allow applications to be configured with unauthenticated access. (Check the box)

@@ -30,7 +30,7 @@ def create_milvus_collection(collection_name, dim):
 # Create an embedding for given text/doc and insert it into Milvus Vector DB
 def insert_embedding(collection, id_path, text):
     embedding =  model_embedding.get_embeddings(text)
-    data = [[id_path], [embedding]]
+    data = [[id_path], embedding.tolist()]
     collection.insert(data)
     
 def main():

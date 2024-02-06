@@ -4,19 +4,21 @@ POST /chat
 
 ```json
 {
-    "inputs": "What is Cloudera Machine Learning?",
+    "prompt": "What is Cloudera Machine Learning?",
     "parameters": {
         "temperature": 1,
-        "max_tokens": 10,
-        "model": "llama-2-13b-chat"
-    }
+        "max_tokens": 10
+    },
+    "selected_model": "poc/gpu/rag/llama-2-13b-chat",
+    "selected_vector_db": "MILVUS",
+    "user": "genius"
 }
 ```
 
 
 ```json
 {
-    "response": " Cloudera Machine Learning empowers you"
+    "answer": "Cloudera Machine Learning empowers you"
 }
 ```
 
@@ -29,16 +31,24 @@ GET /settings
     "max_tokens": 100,
     "models": [
         {
-            "name": "llama-2-13b-chat",
-            "link": "https://huggingface.co/meta-llama/Llama-2-13b-chat-hf"
-        },
-        {
-            "name": "llama-2-70b-chat",
-            "link": "https://huggingface.co/meta-llama/Llama-2-70b-chat-hf"
-        },
-        {
-            "name": "llama-2-7b-chat",
+            "name": "poc/gpu/rag/llama-2-7b-chat",
             "link": "https://huggingface.co/meta-llama/Llama-2-7b-chat-hf"
+        },
+        {
+            "name": "gpu/rag/llama-2-7b-chat",
+            "link": "https://huggingface.co/meta-llama/Llama-2-7b-chat-hf"
+        },
+        {
+            "name": "gpu/prompt/Mixtral-8x7B",
+            "link": "https://huggingface.co/mistralai/Mixtral-8x7B-v0.1"
+        },
+        {
+            "name": "gpu/fine-tuned/Mixtral-8x7B",
+            "link": "https://huggingface.co/mistralai/Mixtral-8x7B-v0.1"
+        },
+        {
+            "name": "cpu/rag/distilbert-base-uncased",
+            "link": "https://huggingface.co/distilbert-base-uncased"
         }
     ]
 }
@@ -54,3 +64,17 @@ GET /status
 }
 ```
 
+# Model Serving
+
+{
+    "prompt": "What is Cloudera Machine Learning?",
+    "temperature": 1,
+    "max_tokens": 200,
+    "context": "Cloudera Machine Learning is a platform for machine learning and analytics that runs in the public cloud or on-premises.",
+    "user": "genius"
+}
+
+--
+{
+    "answer": "Cloudera Machine Learning empowers you"
+}

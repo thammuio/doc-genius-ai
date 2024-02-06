@@ -3,9 +3,9 @@ description: |
   Generative AI Chatbot for your Documents Powered by CML
 
 author: Suri Nuthalapati
-specification_version: 0.4
-prototype_version: 0.4
-date: "2023-11-22"
+specification_version: 0.6
+prototype_version: 0.6
+date: "2023-01-04"
 
 environment_variables:
   VECTOR_DB:
@@ -25,11 +25,24 @@ environment_variables:
     default: "$CDSW_DOMAIN"
     description: "Required for building UI application: Enter the domain for the Chatbot API. This is the same as the CDSW_DOMAIN environment variable."
     required: true
+  PROJECT_GIT_BRANCH:
+    default: "main"
+    description: "Enter the branch name for the git repo. The default is 'main' and can be changed to identify variations for organizations with multiple branches."
 
 runtimes:
   - editor: JupyterLab
     kernel: Python 3.9
     edition: Nvidia GPU
+
+tasks:
+  - type: run_session
+    name: Select the Git Branch
+    script: session/other/select_git_branch.py
+    short_summary: Select the Git Branch
+    long_summary: Select the Git Branch. The default is 'main' and can be changed to identify variations for organizations with multiple branches.
+    kernel: python3
+    cpu: 2
+    memory: 8
 
 tasks:
   - type: run_session
@@ -58,14 +71,6 @@ tasks:
     kernel: python3
     cpu: 4
     memory: 16
-
-  - type: run_session
-    name: Install Model Dependencies
-    script: session/install-deps/install_model_deps.py
-    short_summary: Install LLM Model Dependencies
-    kernel: python3
-    cpu: 2
-    memory: 8
     gpu: 1
 
   - type: create_job
@@ -100,6 +105,36 @@ tasks:
     entity_label: pinecone_ingestion
     short_summary: Populate Pinecone Vector DB with document embeddings (This will only run if you set "PINECONE" as the Vector DB and provided valid parameters.)
 
+  - type: create_model
+    name: POC LLM Model
+    entity_label: poc_llm
+    description: POC LLM Model
+    short_summary: Deploying a POC LLM Model that runs CML Model
+    default_resources:
+    cpu: 4
+    memory: 32
+    gpu: 1
+
+  - type: build_model
+    entity_label: poc_llm
+    comment: POC LLM Model
+    examples:
+      - request:
+          question: What is Cloudera Machine Learning?
+          temperature: 1
+          max_tokens: 100
+          context: Cloudera Machine Learning is a platform for machine learning and analytics that runs in the public cloud or on-premises.
+          user: genius
+    target_file_path: app/chatbot/poc/model.py
+    target_function_name: generate_response
+    kernel: python3
+
+  - type: deploy_model
+    entity_label: poc_llm
+    cpu: 4
+    memory: 32
+    gpu: 1
+
   - type: start_application
     name: API for Chatbot - DocGenuis AI
     subdomain: docgenius-api
@@ -111,6 +146,7 @@ tasks:
     gpu: 1
     environment_variables:
       TASK_TYPE: START_APPLICATION
+    bypass_authentication: true
 
   - type: create_job
     name: Build Chatbot UI Code
@@ -138,4 +174,12 @@ tasks:
     memory: 8
     environment_variables:
       TASK_TYPE: START_APPLICATION
+    bypass_authentication: true
 
+  - type: run_session
+    name: Configure some features and flags via cmlapi after deployment
+    script: session/cmlapi/apply_fix_conf.py
+    short_summary: Configure some features and flags via cmlapi after deployment
+    kernel: python3
+    cpu: 2
+    memory: 8

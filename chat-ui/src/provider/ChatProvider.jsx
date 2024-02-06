@@ -66,12 +66,14 @@ export default function ChatProvider({ children }) {
 
     try {
       const body = JSON.stringify({
-        inputs: message,
+        prompt: message,
         parameters: {
           temperature,
           max_tokens: maxTokens,
-          model,
         },
+        "selected_model": model.name,
+        "selected_vector_db": "MILVUS",
+        "user": "genius"
       });
 
       console.log("Sending request with body:", body);
@@ -88,10 +90,14 @@ export default function ChatProvider({ children }) {
       });
 
       console.log("Received response with status:", response.status);
+      
+      if (response.ok) { // Check if response status is 200
+        const data = await response.json();
+        handleAssistantResponse({ content: data.response });
+      } else {
+        handleAssistantResponse({ content: 'Something went wrong, please try again later' });
+      }
 
-      const data = await response.json();
-
-      handleAssistantResponse({ content: data.response });
     } catch (error) {
       console.error("Error:", error);
     }

@@ -9,11 +9,19 @@ def get_settings_data():
             },
             {
                 "name": "llama-2-70b-chat",
-                "link": "https://huggingface.co/meta-llama/Llama-2-70b-chat-hf"
+                "link": "https://huggingface.co/meta-llama/Llama-2-13b-chat-hf"
             },
             {
-                "name": "llama-2-7b-chat",
-                "link": "https://huggingface.co/meta-llama/Llama-2-7b-chat-hf"
+                "name": "Mixtral-8x7B",
+                "link": "https://huggingface.co/mistralai/Mixtral-8x7B-v0.1"
+            },
+            {
+                "name": "GPT-4-Turbo",
+                "link": "https://huggingface.co/mistralai/Mixtral-8x7B-v0.1"
+            },
+            {
+                "name": "DistilBERT-base",
+                "link": "https://huggingface.co/distilbert-base-uncased"
             }
         ]
     }

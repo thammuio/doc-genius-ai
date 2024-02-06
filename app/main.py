@@ -5,7 +5,6 @@ import uvicorn
 from app.api.routes import chat_router, status_router, settings_router
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-import sys
 import os
 
 def create_app():

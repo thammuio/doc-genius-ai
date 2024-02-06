@@ -1,5 +1,5 @@
 from milvus import default_server
-from pymilvus import connections, Collection, utility
+from pymilvus import connections, utility
 import time
 
 # Initialize variables

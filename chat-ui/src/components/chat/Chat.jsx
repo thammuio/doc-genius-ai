@@ -109,13 +109,7 @@ export default function Chat() {
         <CardHeader ref={headerRef} className="pb-10">
           <CardTitle>{`DocGenius AI`}</CardTitle>
           <CardDescription>
-          Generative AI Chatbot for{" "}
-            <Link
-              href="https://docs.cloudera.com"
-              target="_blank"
-              className="text-primary"
-            >{`Cloudera's documentation`}</Link>{" "}
-            universe!
+          Generative AI Chatbot for your Documents!
           </CardDescription>
           <hr style={{ width: '62%' }} />
           <div className="flex items-center gap-2">

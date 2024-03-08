@@ -44,7 +44,6 @@ tasks:
     cpu: 2
     memory: 8
 
-tasks:
   - type: run_session
     name: Validate GPU Availibility
     script: session/resource-validation/check_gpu_resources.py

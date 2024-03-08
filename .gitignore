@@ -4,7 +4,6 @@ _scripts/
 workflows/
 .github/workflows
 scratchpad/
-extract_data/
 .vscode/
 .metals/
 llm-resource-calculator-for-cml/

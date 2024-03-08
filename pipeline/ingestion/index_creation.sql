@@ -1,0 +1,12 @@
+CREATE INDEX textsearch_idx ON document_scrap USING GIN (tsvector_scrap_text);
+CREATE INDEX ON document_scrap (type_name);
+CREATE INDEX ON document_scrap (doc_id);
+CREATE INDEX ON vector_mpnet_norm (doc_id);
+CREATE INDEX ON vector_mini_lm (doc_id);
+CREATE INDEX ON vector_bge_15large (doc_id);
+CREATE INDEX tickets_idx on document USING GIN (tickets);
+CREATE INDEX component_idx on document USING GIN (component);
+CREATE INDEX product_name_idx on document USING GIN (product_name);
+CREATE INDEX crv_idx on document USING GIN (crv);
+CREATE INDEX ON vector_mpnet_norm USING ivfflat (embedding vector_ip_ops) WITH (lists = 100);
+CREATE INDEX ON vector_mini_lm USING ivfflat (embedding vector_ip_ops) WITH (lists = 100);

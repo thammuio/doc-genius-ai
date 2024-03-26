@@ -26,13 +26,13 @@ def create_milvus_collection(collection_name, dim):
       }
       collection.create_index(field_name="embedding", index_params=index_params)
       return collection
-    
+
 # Create an embedding for given text/doc and insert it into Milvus Vector DB
 def insert_embedding(collection, id_path, text):
     embedding =  model_embedding.get_embeddings(text)
-    data = [[id_path], embedding.tolist()]
+    data = [[id_path], [embedding]]
     collection.insert(data)
-    
+
 def main():
   if os.getenv('VECTOR_DB').upper() == "MILVUS":
     # Reset the vector database files
@@ -67,8 +67,8 @@ def main():
     except Exception as e:
       default_server.stop()
       raise (e)
-      
-    
+
+
     default_server.stop()
 
 

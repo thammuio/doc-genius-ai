@@ -17,8 +17,8 @@ def load_llama_model():
     print(gen_ai_model_path)
     llama2_model = Llama(
         model_path=gen_ai_model_path,
-        n_gpu_layers=20,
-        n_ctx=20
+        n_gpu_layers=64,
+        n_ctx=2000
     )
     return llama2_model
 
@@ -50,14 +50,8 @@ def generate_response(json_input):
 
         model_out = response['choices'][0]['text']
 
-        print("Response from Llama model: ")
-        print(response)
-        print("--------------------------- ")
         print(model_out)
-        print("--------------------------- ")
-
-        # answer = response['choices'][0]['text']
-        return {"response": "Success"}
+        return model_out
     
     
     except Exception as e:

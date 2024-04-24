@@ -18,7 +18,7 @@ def check_api_status() -> dict[str, str]:
 # Chat
 # Map the model names to the functions
 model_methods = {
-    "poc/gpu/rag/llama-2-13b-chat": poc_gpu_rag_llama_2_13b_chat
+    "llama-2-13b-chat": poc_gpu_rag_llama_2_13b_chat
     # Add more models here
 }
 

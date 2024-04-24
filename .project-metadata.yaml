@@ -119,7 +119,7 @@ tasks:
     comment: POC LLM Model
     examples:
       - request:
-          question: What is Cloudera Machine Learning?
+          prompt: What is Cloudera Machine Learning?
           temperature: 1
           max_tokens: 100
           context: Cloudera Machine Learning is a platform for machine learning and analytics that runs in the public cloud or on-premises.

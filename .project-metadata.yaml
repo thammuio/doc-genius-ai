@@ -137,6 +137,7 @@ tasks:
   - type: start_application
     name: API for Chatbot - DocGenuis AI
     subdomain: docgenius-api
+    static_subdomain: true
     script: app/main.py
     short_summary: Start API for DocGenuis AI Chatbot 
     long_summary: Start and Publish API for DocGenius AI. Ensure available GPUs for best performance. Remember to enable unauthenticated app access for external access to the UI.
@@ -166,6 +167,7 @@ tasks:
   - type: start_application
     name: Frontend UI - DocGenius AI
     subdomain: docgenius-ui
+    static_subdomain: true
     script: chat-ui/app.py
     short_summary: Start frontend UI for DocGenuis AI Chatbot 
     long_summary: This task will run Flask app to serve the Chatbot Frontend UI. Remember to enable unauthenticated app access for external access to the UI.

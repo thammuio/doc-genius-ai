@@ -3,9 +3,9 @@ description: |
   Generative AI Chatbot for your Documents Powered by CML
 
 author: Suri Nuthalapati
-specification_version: 0.6
-prototype_version: 0.6
-date: "2023-01-04"
+specification_version: 0.8
+prototype_version: 0.8
+date: "2024-04-25"
 
 environment_variables:
   VECTOR_DB:
@@ -28,6 +28,11 @@ environment_variables:
   PROJECT_GIT_BRANCH:
     default: "main"
     description: "Enter the branch name for the git repo. The default is 'main' and can be changed to identify variations for organizations with multiple branches."
+  HF_TOKEN:
+    default: ""
+    description: >-
+      Blank for Ungated Models
+      Provide HuggingFace Token for Gated Models.
 
 runtimes:
   - editor: JupyterLab

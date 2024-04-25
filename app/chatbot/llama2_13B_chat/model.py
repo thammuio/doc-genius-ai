@@ -8,7 +8,7 @@ import os
 
 # Define the model 
 GEN_AI_MODEL_REPO = "TheBloke/Llama-2-13B-chat-GGUF"
-GEN_AI_MODEL_FILENAME = "llama-2-13b-chat.Q5_0.gguf"
+GEN_AI_MODEL_FILENAME = "llama-2-13b-chat.Q2_K.gguf"
 
 print("Initiate Llama model...")
 def load_llama_model():
@@ -29,31 +29,25 @@ print("Model loaded successfully!")
 
 # Pass through user input to LLM model with enhanced prompt and stop tokens
 def generate_response(json_input):
-
     try:
-        print("Input from user: ")
-        print(json_input)
-        # Assuming json_input is your dictionary
-        json_input_str = json.dumps(json_input)
-        data = json.loads(json_input_str)
-        print("json.loads:")
-        print(data)
-        question = "Answer this question based on given context: " + data['prompt'] + " "
-        context = " Here is the context: " + str(data['context'])
+        question = "Answer this question based on given context: " + json_input['prompt'] + " "
+        context = " Here is the context: " + str(json_input['context'])
         question_and_context = question + context
 
         params = {
-            "temperature": float(data['temperature']),
-            "max_tokens": int(data['max_tokens'])
+            "temperature": float(json_input['temperature']),
+            "max_tokens": int(json_input['max_tokens'])
         }
         response = llama2_model(prompt=question_and_context, **params)
 
         model_out = response['choices'][0]['text']
 
-        print(model_out)
-        return model_out
+        # Return a serializable object
+        return {"response": model_out}
     
-    
+    except KeyError as ke:
+        print(f"KeyError: {ke}")
+        return {"error": f"Missing key: {ke}"}
     except Exception as e:
-        print(e)
-        return e
+        print(str(e))
+        return {"error": str(e)}  # Use str(e) to ensure the error message is serializable

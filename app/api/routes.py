@@ -2,7 +2,11 @@ from fastapi import APIRouter
 from fastapi import HTTPException
 from fastapi.responses import RedirectResponse
 from app.api.get_configs import get_settings_data
-from app.chatbot.poc.controller import poc_gpu_rag_llama_2_13b_chat
+from app.chatbot.llama2_7B_chat.controller import llama_2_7b_chat
+from app.chatbot.llama2_13B_chat.controller import llama_2_13b_chat
+from app.chatbot.llama3_8B_instruct.controller import llama_3_8b_instruct
+from app.chatbot.zephyr_7B_alpha.controller import zephyr_7B_alpha
+
 
 # API Status
 status_router = APIRouter()
@@ -18,8 +22,10 @@ def check_api_status() -> dict[str, str]:
 # Chat
 # Map the model names to the functions
 model_methods = {
-    "llama-2-13b-chat": poc_gpu_rag_llama_2_13b_chat
-    # Add more models here
+    "llama-2-7B-chat": llama_2_7b_chat,
+    "llama-2-13B-chat": llama_2_13b_chat,
+    "Meta-Llama-3-8B-Instruct": llama_3_8b_instruct,
+    "zephyr-7B-alpha": zephyr_7B_alpha
 }
 
 chat_router = APIRouter()

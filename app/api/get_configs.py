@@ -4,11 +4,15 @@ def get_settings_data():
         "max_tokens": 100,
         "models": [
             {
-                "name": "llama-2-13b-chat",
-                "link": "https://huggingface.co/meta-llama/Llama-2-13b-chat-hf"
+                "name": "llama-2-7B-chat",
+                "link": "https://huggingface.co/TheBloke/Llama-2-7B-Chat-GGUF"
             },
             {
-                "name": "zephyr-7b-alpha",
+                "name": "llama-2-13B-chat",
+                "link": "https://huggingface.co/TheBloke/Llama-2-13B-chat-GGUF"
+            },
+            {
+                "name": "zephyr-7B-alpha",
                 "link": "https://huggingface.co/HuggingFaceH4/zephyr-7b-alpha"
             },
             {

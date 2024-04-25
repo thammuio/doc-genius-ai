@@ -27,4 +27,4 @@ typing-extensions
 typing-inspect
 typing_extensions
 uvicorn
-xformers 
+xformers

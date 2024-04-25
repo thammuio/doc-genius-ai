@@ -28,3 +28,4 @@ typing-inspect
 typing_extensions
 uvicorn
 xformers
+SentencePiece

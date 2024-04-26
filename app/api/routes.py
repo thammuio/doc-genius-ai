@@ -6,7 +6,8 @@ from app.chatbot.llama2_7B_chat.controller import llama_2_7b_chat
 from app.chatbot.llama2_13B_chat.controller import llama_2_13b_chat
 from app.chatbot.llama3_8B_instruct.controller import llama_3_8b_instruct
 from app.chatbot.zephyr_7B_alpha.controller import zephyr_7B_alpha
-
+from app.chatbot.llama2_7B_chat_hf.controller import llama2_7b_chat_hf
+from app.chatbot.mistral_7B_instruct.controller import mistral_7b_instruct
 
 # API Status
 status_router = APIRouter()
@@ -25,7 +26,9 @@ model_methods = {
     "llama-2-7B-chat": llama_2_7b_chat,
     "llama-2-13B-chat": llama_2_13b_chat,
     "Meta-Llama-3-8B-Instruct": llama_3_8b_instruct,
-    "zephyr-7B-alpha": zephyr_7B_alpha
+    "zephyr-7B-alpha": zephyr_7B_alpha,
+    "Llama-2-7b-chat-hf": llama2_7b_chat_hf,
+    "Mistral-7B-Instruct": mistral_7b_instruct
 }
 
 chat_router = APIRouter()

@@ -33,6 +33,7 @@ environment_variables:
     description: >-
       Blank for Ungated Models
       Provide HuggingFace Token for Gated Models.
+    required: true
 
 runtimes:
   - editor: JupyterLab
@@ -110,23 +111,27 @@ tasks:
     short_summary: Populate Pinecone Vector DB with document embeddings (This will only run if you set "PINECONE" as the Vector DB and provided valid parameters.)
 
   - type: create_model
-    name: llama-2-7B-chat
-    entity_label: llama2_chat
-    description: llama-2-7B-chat
+    name: llama2-7B-chat
+    entity_label: llama2-7B-chat
+    description: llama2-7B-chat
     short_summary: Deploying a llama-2-7B-chat that runs on CML Model
     default_resources:
-    cpu: 4
-    memory: 32
-    gpu: 1
+      cpu: 4
+      memory: 16
+      gpu: 1
+    default_replication_policy:
+      type: fixed
+      num_replicas: 1
 
   - type: build_model
-    entity_label: llama2_chat
-    comment: llama-2-7B-chat
+    entity_label: llama2-7B-chat
+    comment: First build by the AMP for llama2-7B-chat
     examples:
       - request:
           prompt: What is Cloudera Machine Learning?
           temperature: 1
           max_tokens: 100
+          repetition_penalty: 0.5
           context: Cloudera Machine Learning is a platform for machine learning and analytics that runs in the public cloud or on-premises.
           user: genius
     target_file_path: app/chatbot/llama2_7B_chat/model.py
@@ -134,7 +139,7 @@ tasks:
     kernel: python3
 
   - type: deploy_model
-    entity_label: llama2_chat
+    entity_label: llama2-7B-chat
     cpu: 4
     memory: 32
     gpu: 1

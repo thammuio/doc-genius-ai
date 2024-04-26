@@ -4,12 +4,20 @@ def get_settings_data():
         "max_tokens": 100,
         "models": [
             {
-                "name": "llama-2-7B-chat",
+                "name": "llama2-7B-chat",
                 "link": "https://huggingface.co/TheBloke/Llama-2-7B-Chat-GGUF"
             },
             {
-                "name": "llama-2-13B-chat",
+                "name": "llama2-13B-chat",
                 "link": "https://huggingface.co/TheBloke/Llama-2-13B-chat-GGUF"
+            },
+            {
+                "name": "Llama-2-7b-chat-hf",
+                "link": "https://huggingface.co/NousResearch/Llama-2-7b-chat-hf"
+            },
+            {
+                "name": "Mistral-7B-Instruct",
+                "link": "https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.2"
             },
             {
                 "name": "zephyr-7B-alpha",

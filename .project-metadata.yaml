@@ -112,7 +112,7 @@ tasks:
 
   - type: create_model
     name: llama2-7B-chat
-    entity_label: llama2-7B-chat
+    entity_label: llama2_7b_chat
     description: llama2-7B-chat
     short_summary: Deploying a llama-2-7B-chat that runs on CML Model
     default_resources:
@@ -124,7 +124,7 @@ tasks:
       num_replicas: 1
 
   - type: build_model
-    entity_label: llama2-7B-chat
+    entity_label: llama2_7b_chat
     comment: First build by the AMP for llama2-7B-chat
     examples:
       - request:
@@ -139,7 +139,7 @@ tasks:
     kernel: python3
 
   - type: deploy_model
-    entity_label: llama2-7B-chat
+    entity_label: llama2_7b_chat
     cpu: 4
     memory: 32
     gpu: 1

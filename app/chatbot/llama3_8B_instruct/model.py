@@ -15,7 +15,7 @@ terminators = [
 
 def generate_response(question: str,
               temperature: float, 
-              max_new_tokens: int
+              max_tokens: int
              ) -> str:
     """
     Generate a streaming response using the llama3-8b model.
@@ -23,7 +23,7 @@ def generate_response(question: str,
         question (str): The input question.
         history (list): The conversation history used by ChatInterface.
         temperature (float): The temperature for generating the response.
-        max_new_tokens (int): The maximum number of new tokens to generate.
+        max_tokens (int): The maximum number of new tokens to generate.
     Returns:
         str: The generated response.
     """
@@ -35,7 +35,7 @@ def generate_response(question: str,
     generate_kwargs = dict(
         input_ids= input_ids,
         streamer=streamer,
-        max_new_tokens=max_new_tokens,
+        max_tokens=max_tokens,
         do_sample=True,
         temperature=temperature,
         eos_token_id=terminators,

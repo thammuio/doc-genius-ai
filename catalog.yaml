@@ -10,9 +10,9 @@ entries:
       https://raw.githubusercontent.com/thammuio/doc-genius-ai/main/images/doc-genius-ai.png
     tags:
       - Cloudera
-      - Cloudera MAchine Learning
+      - Cloudera Machine Learning
       - Generative AI
-      - LLM
+      - AI Chatbot
       - Trust Your Data
       - Chatbot
     git_url: "https://github.com/thammuio/doc-genius-ai.git"

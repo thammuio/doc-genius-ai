@@ -21,4 +21,4 @@
 # export FORCE_CMAKE=1
 
 ## Build llama-cpp-python w/ CUDA enablement
-pip install llama-cpp-python
+pip install --no-cache-dir llama-cpp-python

@@ -29,3 +29,5 @@ typing_extensions
 uvicorn
 xformers
 SentencePiece
+git+https://github.com/huggingface/peft.git@0b62b4378b4ce9367932c73540349da9a41bdea8
+# git+https://github.com/huggingface/transformers #needed for Mistral

@@ -33,7 +33,7 @@ environment_variables:
     description: >-
       Blank for Ungated Models
       Provide HuggingFace Token for Gated Models.
-    required: true
+    # required: true
 
 runtimes:
   - editor: JupyterLab

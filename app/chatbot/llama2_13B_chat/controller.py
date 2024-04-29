@@ -54,14 +54,20 @@ def llama_2_13b_chat(prompt, temperature, max_tokens, selected_vector_db, user):
         context_chunk = get_nearest_chunk_from_pinecone_vectordb(index, vdb_question)
 
     # Step 2: Call the relavent Model in Model Serving
-    MODEL_ACCESS_KEY = get_model_access_key({"name": "llama-2-13B-chat"})
-
-    question = {'prompt': prompt, "temperature": temperature, "max_tokens": max_tokens, "context": context_chunk, "user": user}
-    data = json.dumps({'accessKey': MODEL_ACCESS_KEY, 'request': question})
-    response = requests.post(MODEL_API_URL, data = data, headers = HEADERS)
+    try:
+        MODEL_ACCESS_KEY = get_model_access_key({"name": "llama2-13B-chat"})
+    except Exception as e:
+        return json.dumps({"answer": "Something went wrong! Try again later!"})
+    try:
+        question = {'prompt': prompt, "temperature": temperature, "max_tokens": max_tokens, "context": context_chunk, "user": user}
+        data = json.dumps({'accessKey': MODEL_ACCESS_KEY, 'request': question})
+        response_dict = requests.post(MODEL_API_URL, data = data, headers = HEADERS)
+    except Exception as e:
+        return json.dumps({"answer": "Something went wrong! Try again later!"})
     
     try:
-        response_json = response.json()
-        return response_json.get('response')
+        response_dict = response_dict.json()
+        answer = response_dict.get('response', {}).get('response')
+        return {"answer": answer}
     except json.JSONDecodeError:
-        return "Failed to parse JSON response"
+        return json.dumps({"answer": "Something went wrong! Try again later!"})

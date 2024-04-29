@@ -20,9 +20,12 @@ export default function ChatProvider({ children }) {
   const [isWaiting, setIsWaiting] = useState(false);
   const [model, setModel] = useState({});
   const [models, setModels] = useState([]);
+  const [vectorDatabase, setVectorDatabase] = useState([]);
+  const [isChatAvailable, setIsChatAvailable] = useState(false);
   const [temperature, setTemperature] = useState(0.7);
   const [maxTokens, setMaxTokens] = useState(100);
-  const [isFinishedConversation, setIsFinishedConversation] = useState(false);
+  const [userID, setUserID] = useState('genius');
+  const [isFinishedConversation, setIsFinishedConversation] = useState();
   const domain = process.env.NEXT_PUBLIC_CHATBOT_API_DOMAIN;
   const api = `https://docgenius-api.${domain}`;
   const origin = `https://docgenius-ui.${domain}`;
@@ -30,11 +33,27 @@ export default function ChatProvider({ children }) {
 
   useEffect(() => {
     fetch(`${api}/settings`).then((response) => {
+      let isChatAvailable = false;
+      setIsChatAvailable(isChatAvailable);
       if (response.ok) {
+        isChatAvailable = true;
+        setIsChatAvailable(isChatAvailable);
         response.json().then((data) => {
           if (data?.models) {
             setModels(data.models);
             setModel(data.models[0]);
+          }
+          if (data?.vector_dbs) {
+            setVectorDatabase(data.vector_dbs);
+          }
+          if (data?.max_tokens) {
+            setMaxTokens(data.max_tokens);
+          }
+          if (data?.temperature) {
+            setTemperature(data.temperature);
+          }
+          if (data?.user_id) {
+            setUserId(data.user_id);
           }
         });
       }
@@ -66,14 +85,12 @@ export default function ChatProvider({ children }) {
 
     try {
       const body = JSON.stringify({
-        prompt: message,
-        parameters: {
-          temperature,
-          max_tokens: maxTokens,
-        },
-        "selected_model": model.name,
-        "selected_vector_db": "MILVUS",
-        "user": "genius"
+        "prompt": message,
+        "temperature": temperature,
+        "max_tokens": maxTokens,
+        "model": model.name,
+        "vector_db": vectorDatabase.name,
+        "user_id": userID
       });
 
       console.log("Sending request with body:", body);
@@ -166,6 +183,12 @@ export default function ChatProvider({ children }) {
       isTyping,
       setIsTyping,
       isFinishedConversation,
+      userID,
+      setUserID,
+      vectorDatabase,
+      setVectorDatabase,
+      isChatAvailable,
+      setIsChatAvailable,
     }),
     [
       createNewChat,
@@ -184,6 +207,12 @@ export default function ChatProvider({ children }) {
       isTyping,
       setIsTyping,
       isFinishedConversation,
+      userID,
+      setUserID,
+      vectorDatabase,
+      setVectorDatabase,
+      isChatAvailable,
+      setIsChatAvailable,
     ]
   );
 

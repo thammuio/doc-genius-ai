@@ -41,6 +41,11 @@ export function ConfigModal({ open, setOpen }) {
     setTemperature,
     maxTokens,
     setMaxTokens,
+    vectorDatabases,
+    vectorDatabase,
+    setVectorDatabase,
+    userID,
+    setUserID,
   } = useContext(ChatContext);
 
   const handleSetModel = (modelName) => {
@@ -53,6 +58,16 @@ export function ConfigModal({ open, setOpen }) {
     }
   };
 
+  const handleSetVectorDatabase = (databaseName) => {
+    console.log(databaseName, "======");
+    for (const item of vectorDatabases) {
+      if (item.name === databaseName) {
+        setVectorDatabase(item);
+        break;
+      }
+    }
+  };
+  
   return (
     <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger asChild></SheetTrigger>
@@ -62,6 +77,7 @@ export function ConfigModal({ open, setOpen }) {
           <SheetDescription>Configure your chatbot settings</SheetDescription>
         </SheetHeader>
         <div className="grid gap-4 py-4">
+
           <div className="flex justify-end items-center gap-4">
             <Label htmlFor="name" className="text-right whitespace-nowrap">
               Model
@@ -86,7 +102,7 @@ export function ConfigModal({ open, setOpen }) {
             </Select>
           </div>
           <div className="flex justify-end items-center gap-4">
-            <Label htmlFor="username" className="text-right whitespace-nowrap">
+            <Label htmlFor="temperature" className="text-right whitespace-nowrap">
               Temperature
               <br />
               <small>(Randomness of Response)</small>
@@ -99,7 +115,7 @@ export function ConfigModal({ open, setOpen }) {
             />
           </div>
           <div className="flex justify-end items-center gap-4">
-            <Label htmlFor="username" className="text-right whitespace-nowrap">
+            <Label htmlFor="maxTokens" className="text-right whitespace-nowrap">
               Number of Tokens <br /> <small>(Length of Response)</small>
             </Label>
             <Input
@@ -109,6 +125,43 @@ export function ConfigModal({ open, setOpen }) {
               onChange={(e) => setMaxTokens(e.target.value)}
             />
           </div>
+          <div className="flex justify-end items-center gap-4">
+          <Label htmlFor="vectorDatabase" className="text-right whitespace-nowrap">
+            Vector Database
+          </Label>
+          <Select
+            className="col-span-1"
+            value={vectorDatabase?.name}
+            onValueChange={(value) => handleSetVectorDatabase(value)}
+          >
+            <SelectTrigger className="w-auto">
+              <SelectValue placeholder="Select a VectorDB" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectGroup>
+              {vectorDatabases && vectorDatabases.map((item) => (
+                <SelectItem key={item.name} value={item.name}>
+                  {item.name}
+                </SelectItem>
+              ))}
+              </SelectGroup>
+            </SelectContent>
+          </Select>
+        </div>
+        <div className="flex justify-end items-center gap-4">
+            <Label htmlFor="userID" className="text-right whitespace-nowrap">
+              User ID
+            </Label>
+            <Input
+              id="userID"
+              type="text"
+              value={userID}
+              onChange={(e) => setUserID(e.target.value)}
+            />
+          </div>
+
+
+
         </div>
         <SheetFooter>
           <SheetClose asChild>

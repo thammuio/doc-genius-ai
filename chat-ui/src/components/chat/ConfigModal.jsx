@@ -41,7 +41,6 @@ export function ConfigModal({ open, setOpen }) {
     setTemperature,
     maxTokens,
     setMaxTokens,
-    vectorDatabases,
     vectorDatabase,
     setVectorDatabase,
     userID,
@@ -60,7 +59,7 @@ export function ConfigModal({ open, setOpen }) {
 
   const handleSetVectorDatabase = (databaseName) => {
     console.log(databaseName, "======");
-    for (const item of vectorDatabases) {
+    for (const item of vectorDatabase) {
       if (item.name === databaseName) {
         setVectorDatabase(item);
         break;
@@ -131,7 +130,7 @@ export function ConfigModal({ open, setOpen }) {
           </Label>
           <Select
             className="col-span-1"
-            value={vectorDatabase?.name}
+            value={vectorDatabase}
             onValueChange={(value) => handleSetVectorDatabase(value)}
           >
             <SelectTrigger className="w-auto">
@@ -139,9 +138,9 @@ export function ConfigModal({ open, setOpen }) {
             </SelectTrigger>
             <SelectContent>
               <SelectGroup>
-              {vectorDatabases && vectorDatabases.map((item) => (
-                <SelectItem key={item.name} value={item.name}>
-                  {item.name}
+              {vectorDatabase && vectorDatabase.map((item) => (
+                <SelectItem key={item} value={item}>
+                  {item}
                 </SelectItem>
               ))}
               </SelectGroup>

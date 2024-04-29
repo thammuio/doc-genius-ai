@@ -53,7 +53,7 @@ async def chat_endpoint(payload: dict):
 
     vector_db = payload.get("vector_db")
     if not vector_db:
-        raise ValueError("selected_vector_db is missing or None")
+        raise ValueError("vector_db is missing or None")
 
     user = payload.get("user_id")
     if not user:

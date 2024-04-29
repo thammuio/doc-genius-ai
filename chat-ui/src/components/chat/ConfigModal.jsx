@@ -41,6 +41,7 @@ export function ConfigModal({ open, setOpen }) {
     setTemperature,
     maxTokens,
     setMaxTokens,
+    vectorDatabases,
     vectorDatabase,
     setVectorDatabase,
     userID,
@@ -59,11 +60,14 @@ export function ConfigModal({ open, setOpen }) {
 
   const handleSetVectorDatabase = (databaseName) => {
     console.log(databaseName, "======");
-    for (const item of vectorDatabase) {
+    for (const item of vectorDatabases) {
+      if (item.name === databaseName) {
         setVectorDatabase(item);
         break;
+      }
     }
   };
+
   
   return (
     <Sheet open={open} onOpenChange={setOpen}>
@@ -123,28 +127,28 @@ export function ConfigModal({ open, setOpen }) {
             />
           </div>
           <div className="flex justify-end items-center gap-4">
-          <Label htmlFor="vectorDatabase" className="text-right whitespace-nowrap">
-            Vector Database
-          </Label>
-          <Select
-            className="col-span-1"
-            value={vectorDatabase}
-            onValueChange={(value) => handleSetVectorDatabase(value)}
-          >
-            <SelectTrigger className="w-auto">
-              <SelectValue placeholder="Select a VectorDB" />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectGroup>
-              {vectorDatabase && vectorDatabase.map((item) => (
-                <SelectItem key={item} value={item}>
-                  {item}
-                </SelectItem>
-              ))}
-              </SelectGroup>
-            </SelectContent>
-          </Select>
-        </div>
+            <Label htmlFor="name" className="text-right whitespace-nowrap">
+              Vector dB
+            </Label>
+            <Select
+              className="col-span-1"
+              value={vectorDatabase?.name}
+              onValueChange={(value) => handleSetVectorDatabase(value)}
+            >
+              <SelectTrigger className="w-auto">
+                <SelectValue placeholder="Select a Vector DB" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectGroup>
+                  {vectorDatabases.map((item) => (
+                    <SelectItem key={item.name} value={item.name}>
+                      {item.name}
+                    </SelectItem>
+                  ))}
+                </SelectGroup>
+              </SelectContent>
+            </Select>
+          </div>
         <div className="flex justify-end items-center gap-4">
             <Label htmlFor="userID" className="text-right whitespace-nowrap">
               User ID

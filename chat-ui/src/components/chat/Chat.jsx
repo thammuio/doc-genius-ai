@@ -43,6 +43,7 @@ export default function Chat() {
     isTyping,
     isWaiting,
     isFinishedConversation,
+    isChatAvailable,
   } = useContext(ChatContext);
   const [chatInput, setChatInput] = useState("");
   const [openConfigModal, setOpenConfigModal] = useState(false);
@@ -107,7 +108,13 @@ export default function Chat() {
     <section className="w-full h-[90%] my-auto px-4" ref={sectionRef}>
       <Card className="max-w-5xl mx-auto h-full relative pb-10">
         <CardHeader ref={headerRef} className="pb-10">
-          <CardTitle>{`DocGenius AI`}</CardTitle>
+          <CardTitle>{`DocGenius AI`} 
+          {isChatAvailable ? 
+          <Button className="border-green-500 text-green-500 text-xs px-1 py-0 ml-2" variant="outline" size="xs">Available</Button> 
+          : 
+          <Button className="border-red-500 text-red-500 text-xs px-1 py-0 ml-2" variant="outline" size="xs">Not Available</Button>
+          }
+          </CardTitle>
           <CardDescription>
           Generative AI Chatbot for your Documents!
           </CardDescription>

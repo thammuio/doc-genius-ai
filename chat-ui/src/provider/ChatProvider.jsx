@@ -112,7 +112,7 @@ export default function ChatProvider({ children }) {
       
       if (response.ok) { // Check if response status is 200
         const data = await response.json();
-        handleAssistantResponse({ content: data.response });
+        handleAssistantResponse({ content: data.answer });
       } else {
         handleAssistantResponse({ content: 'Something went wrong, please try again later' });
       }

@@ -55,7 +55,7 @@ export default function ChatProvider({ children }) {
             setTemperature(data.temperature);
           }
           if (data?.user_id) {
-            setUserId(data.user_id);
+            setUserID(data.user_id);
           }
         });
       }

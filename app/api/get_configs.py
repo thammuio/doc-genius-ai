@@ -9,19 +9,19 @@ def get_settings_data():
             },
             {
                 "name": "CHROMA",
-                "link": ""
+                "link": "https://www.trychroma.com/"
             },
             {
                 "name": "PINECONE",
-                "link": ""
+                "link": "https://www.pinecone.io/"
             },
             {
                 "name": "FAISS",
-                "link": ""
+                "link": "https://github.com/facebookresearch/faiss"
             },
             {
                 "name": "PGVECTOR",
-                "link": ""
+                "link": "https://github.com/pgvector/pgvector"
             }
         ],
         "user_id": "genius",

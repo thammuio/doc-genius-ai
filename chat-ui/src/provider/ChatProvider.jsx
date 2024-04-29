@@ -89,7 +89,7 @@ export default function ChatProvider({ children }) {
         "temperature": temperature,
         "max_tokens": maxTokens,
         "model": model.name,
-        "vector_db": vectorDatabase.name,
+        "vector_db": vectorDatabase,
         "user_id": userID
       });
 

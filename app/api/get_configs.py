@@ -1,7 +1,9 @@
 def get_settings_data():
     return {
-        "temperature": 1,
+        "temperature": 0.7,
         "max_tokens": 100,
+        "vector_dbs": ["MILVUS", "CHROMA", "PINECONE", "FAISS", "PGVECTOR"],
+        "user_id": "genius",
         "models": [
             {
                 "name": "llama2-7B-chat",

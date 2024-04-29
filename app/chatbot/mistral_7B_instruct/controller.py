@@ -54,7 +54,7 @@ def mistral_7b_instruct(prompt, temperature, max_tokens, selected_vector_db, use
         context_chunk = get_nearest_chunk_from_pinecone_vectordb(index, vdb_question)
 
     # Step 2: Call the relavent Model in Model Serving
-    MODEL_ACCESS_KEY = get_model_access_key({"name": "llama-2-7B-chat"})
+    MODEL_ACCESS_KEY = get_model_access_key({"name": "Mistral-7B-Instruct"})
 
     question = {'prompt': prompt, "temperature": temperature, "max_tokens": max_tokens, "context": context_chunk, "user": user}
     data = json.dumps({'accessKey': MODEL_ACCESS_KEY, 'request': question})

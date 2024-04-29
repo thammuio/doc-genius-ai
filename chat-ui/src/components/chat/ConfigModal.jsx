@@ -140,7 +140,7 @@ export function ConfigModal({ open, setOpen }) {
               </SelectTrigger>
               <SelectContent>
                 <SelectGroup>
-                  {vectorDatabases.map((item) => (
+                { (vectorDatabases || []).map((item) => (
                     <SelectItem key={item.name} value={item.name}>
                       {item.name}
                     </SelectItem>

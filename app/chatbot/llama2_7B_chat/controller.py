@@ -39,6 +39,7 @@ def llama_2_7b_chat(prompt, temperature, max_tokens, selected_vector_db, user):
     if selected_vector_db == "MILVUS":
         context_chunk = get_nearest_chunk_from_milvus_vectordb(vector_db_collection, vdb_question)
         vector_db_collection.release()
+        print(context_chunk)
 
     if selected_vector_db == "PINECONE":
         PINECONE_API_KEY = os.getenv('PINECONE_API_KEY')

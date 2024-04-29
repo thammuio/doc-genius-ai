@@ -23,12 +23,12 @@ def check_api_status() -> dict[str, str]:
 # Chat
 # Map the model names to the functions
 model_methods = {
-    "llama-2-7B-chat": llama_2_7b_chat,
-    "llama-2-13B-chat": llama_2_13b_chat,
-    "Meta-Llama-3-8B-Instruct": llama_3_8b_instruct,
-    "zephyr-7B-alpha": zephyr_7B_alpha,
-    "Llama-2-7b-chat-hf": llama2_7b_chat_hf,
-    "Mistral-7B-Instruct": mistral_7b_instruct
+    "llama-2-7B-chat": llama_2_7b_chat
+    # "llama-2-13B-chat": llama_2_13b_chat,
+    # "Meta-Llama-3-8B-Instruct": llama_3_8b_instruct,
+    # "zephyr-7B-alpha": zephyr_7B_alpha,
+    # "Llama-2-7b-chat-hf": llama2_7b_chat_hf,
+    # "Mistral-7B-Instruct": mistral_7b_instruct
 }
 
 chat_router = APIRouter()

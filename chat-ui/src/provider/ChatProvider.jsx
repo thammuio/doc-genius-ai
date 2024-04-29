@@ -20,7 +20,8 @@ export default function ChatProvider({ children }) {
   const [isWaiting, setIsWaiting] = useState(false);
   const [model, setModel] = useState({});
   const [models, setModels] = useState([]);
-  const [vectorDatabase, setVectorDatabase] = useState([]);
+  const [vectorDatabases, setVectorDatabases] = useState([]);
+  const [vectorDatabase, setVectorDatabase] = useState({});
   const [isChatAvailable, setIsChatAvailable] = useState(false);
   const [temperature, setTemperature] = useState(0.7);
   const [maxTokens, setMaxTokens] = useState(100);
@@ -44,7 +45,8 @@ export default function ChatProvider({ children }) {
             setModel(data.models[0]);
           }
           if (data?.vector_dbs) {
-            setVectorDatabase(data.vector_dbs);
+            setVectorDatabases(data.vector_dbs);
+            setVectorDatabase(data.vector_dbs[0]);
           }
           if (data?.max_tokens) {
             setMaxTokens(data.max_tokens);
@@ -89,7 +91,7 @@ export default function ChatProvider({ children }) {
         "temperature": temperature,
         "max_tokens": maxTokens,
         "model": model.name,
-        "vector_db": vectorDatabase,
+        "vector_db": vectorDatabase.name,
         "user_id": userID
       });
 

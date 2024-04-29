@@ -2,7 +2,28 @@ def get_settings_data():
     return {
         "temperature": 0.7,
         "max_tokens": 100,
-        "vector_dbs": ["MILVUS", "CHROMA", "PINECONE", "FAISS", "PGVECTOR"],
+        "vector_dbs": [
+            {
+                "name": "MILVUS",
+                "link": "https://milvus.io/"
+            },
+            {
+                "name": "CHROMA",
+                "link": ""
+            },
+            {
+                "name": "PINECONE",
+                "link": ""
+            },
+            {
+                "name": "FAISS",
+                "link": ""
+            },
+            {
+                "name": "PGVECTOR",
+                "link": ""
+            }
+        ],
         "user_id": "genius",
         "models": [
             {

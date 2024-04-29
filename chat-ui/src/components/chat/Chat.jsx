@@ -21,7 +21,7 @@ import BotMessageWithReference from "./BotMessageWithReference";
 import { ConfigModal } from "./ConfigModal";
 import LoadingDots from "./LoadingDots";
 import UserMessage from "./UserMessage";
-import { Send, MessageSquarePlus, MoveUpRight, Settings } from "lucide-react";
+import { Send, MessageSquarePlus, MoveUpRight, Settings, ShieldCheck, ShieldX } from "lucide-react";
 import Link from "next/link";
 import Image from 'next/image';
 import cmlicon from '../../images/cmlicon.svg';
@@ -110,9 +110,9 @@ export default function Chat() {
         <CardHeader ref={headerRef} className="pb-10">
           <CardTitle>{`DocGenius AI`} 
           {isChatAvailable ? 
-          <Button className="border-green-500 text-green-500 text-xs px-1 py-0 ml-2" variant="outline" size="xs">Available</Button> 
+          <Button className="border-green-500 text-green-500 text-xs px-1 py-0 ml-2" variant="outline" size="xs"><ShieldCheck className="mr-1" />Available</Button> 
           : 
-          <Button className="border-red-500 text-red-500 text-xs px-1 py-0 ml-2" variant="outline" size="xs">Not Available</Button>
+          <Button className="border-red-500 text-red-500 text-xs px-1 py-0 ml-2" variant="outline" size="xs"><ShieldX className="mr-1" /> Not Available</Button>
           }
           </CardTitle>
           <CardDescription>

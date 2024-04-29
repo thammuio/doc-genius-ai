@@ -60,10 +60,8 @@ export function ConfigModal({ open, setOpen }) {
   const handleSetVectorDatabase = (databaseName) => {
     console.log(databaseName, "======");
     for (const item of vectorDatabase) {
-      if (item.name === databaseName) {
         setVectorDatabase(item);
         break;
-      }
     }
   };
   

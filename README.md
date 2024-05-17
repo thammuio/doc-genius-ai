@@ -63,10 +63,10 @@
 ## Deployment
 
 ### FastAPI for LLMs
-`app` directrory hosts the FastAPI for your LLMs 
+`app` directory hosts the FastAPI for your LLMs 
 
 ### Chatbot UI (Front end)
-`chat-ui` directrory hosts the code for Chatbot UI.
+`chat-ui` directory hosts the code for Chatbot UI.
 
 
 ## Requirements

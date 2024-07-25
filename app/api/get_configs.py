@@ -51,9 +51,21 @@ def get_settings_data():
                 "link": "https://huggingface.co/meta-llama/Meta-Llama-3-8B-Instruct"
             },
             {
-                "name": "GPT-4-Turbo",
-                "link": "https://huggingface.co/mistralai/Mixtral-8x7B-v0.1"
+                "name": "Gemma-7b",
+                "link": "https://huggingface.co/google/gemma-7b"
             },
+            {
+                "name": "Phi-2",
+                "link": "https://huggingface.co/microsoft/phi-2"
+            },
+            {
+                "name": "Phi-3-mini-4k-instruct-gguf",
+                "link": "https://huggingface.co/microsoft/Phi-3-mini-4k-instruct-gguf"
+            },
+            {
+                "name": "OpenELM-3B",
+                "link": "https://huggingface.co/apple/OpenELM"
+            },            
             {
                 "name": "DistilBERT-base",
                 "link": "https://huggingface.co/distilbert-base-uncased"

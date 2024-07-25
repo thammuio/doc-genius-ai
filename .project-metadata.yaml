@@ -37,7 +37,7 @@ environment_variables:
 
 runtimes:
   - editor: JupyterLab
-    kernel: Python 3.9
+    kernel: Python 3.11
     edition: Nvidia GPU
 
 tasks:

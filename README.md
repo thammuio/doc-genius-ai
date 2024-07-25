@@ -77,7 +77,7 @@
   - The torch libraries in this require a GPU with CUDA compute capability 5.0 or higher. (i.e. NVIDIA V100, A100, T4 GPUs)
 
 #### Recommended Runtime
-JupyterLab - Python 3.9 - Nvidia GPU - 2023.08
+JupyterLab - Python 3.11 - Nvidia GPU - 2023.08
 
 #### AMP Docs
 https://docs.cloudera.com/machine-learning/cloud/applied-ml-prototypes/topics/ml-amp-project-spec.html
@@ -100,7 +100,7 @@ This requires pip packages and models from huggingface. Depending on your CML ne
 #### Open-Source Models and Utilities
 - [all-mpnet-base-v2](https://huggingface.co/sentence-transformers/sentence-transformers/all-mpnet-base-v2/resolve/main/all-mpnet-base-v2.tar.gz)
      - Vector Embeddings Generation Model
-- [llama-2-13b-chat.Q5_0.gguf](https://huggingface.co/TheBloke/Llama-2-13B-chat-GGUF/blob/main/llama-2-13b-chat.Q5_0.gguf)
+- [llama-2-13b-chat.Q5_0.gguf](https://huggingface.co/TheBloke/Llama-2-13B-chat-GGUF/blob/main/llama-2-13b-chat.Q2_K.gguf)
    - Instruction-following Large Language Model
 - [Hugging Face transformers library](https://pypi.org/project/transformers/)
 #### Vector Database

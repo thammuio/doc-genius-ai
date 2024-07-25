@@ -77,7 +77,7 @@
   - The torch libraries in this require a GPU with CUDA compute capability 5.0 or higher. (i.e. NVIDIA V100, A100, T4 GPUs)
 
 #### Recommended Runtime
-JupyterLab - Python 3.11 - Nvidia GPU - 2023.08
+JupyterLab - Python 3.11 - Nvidia GPU
 
 #### AMP Docs
 https://docs.cloudera.com/machine-learning/cloud/applied-ml-prototypes/topics/ml-amp-project-spec.html

@@ -5,7 +5,7 @@ entries:
     label: doc-genius-ai
     short_description: Generative AI Chatbot for your Documents powered by Cloudera Machine Learning
     long_description: >-
-      Generative AI Chatbot for your Documents powered by Cloudera Machine Learning
+      Generative AI Chatbot for your Documents powered by Cloudera Machine Learning. Please read this IMPORTANT NOTICE (https://github.com/thammuio/doc-genius-ai/blob/main/README.md#important-notice) before proceeding to Deploy this AMP.
     image_path: >-
       https://raw.githubusercontent.com/thammuio/doc-genius-ai/main/images/doc-genius-ai.png
     tags:

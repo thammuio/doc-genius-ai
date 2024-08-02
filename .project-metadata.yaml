@@ -8,6 +8,18 @@ prototype_version: 0.8
 date: "2024-04-25"
 
 environment_variables:
+  MODEL_ENDPOINT_URL_1:
+    default: ""
+    description: "Enter your AI Inference Model URL"
+    required: true
+  MODEL_ENDPOINT_ID_1:
+    default: ""
+    description: "Enter ID of MODEL_ENDPOINT_URL_1 Inference Model URL"
+    required: true
+  VECTOR_DB:
+    default: "MILVUS"
+    description: "Enter 'MILVUS' or 'PINECONE' for your preferred Vector DB. Only 'MILVUS' or 'PINECONE' are valid options. Milvus does not require any additional setup. Pinecone will require you to create an account and generate an API key."
+    required: true
   VECTOR_DB:
     default: "MILVUS"
     description: "Enter 'MILVUS' or 'PINECONE' for your preferred Vector DB. Only 'MILVUS' or 'PINECONE' are valid options. Milvus does not require any additional setup. Pinecone will require you to create an account and generate an API key."
@@ -109,40 +121,6 @@ tasks:
   - type: run_job
     entity_label: pinecone_ingestion
     short_summary: Populate Pinecone Vector DB with document embeddings (This will only run if you set "PINECONE" as the Vector DB and provided valid parameters.)
-
-  - type: create_model
-    name: llama2-7B-chat
-    entity_label: llama2_7b_chat
-    description: llama2-7B-chat
-    short_summary: Deploying a llama-2-7B-chat that runs on CML Model
-    default_resources:
-      cpu: 4
-      memory: 16
-      gpu: 1
-    default_replication_policy:
-      type: fixed
-      num_replicas: 1
-
-  - type: build_model
-    entity_label: llama2_7b_chat
-    comment: First build by the AMP for llama2-7B-chat
-    examples:
-      - request:
-          prompt: What is Cloudera Machine Learning?
-          temperature: 1
-          max_tokens: 100
-          repetition_penalty: 0.5
-          context: Cloudera Machine Learning is a platform for machine learning and analytics that runs in the public cloud or on-premises.
-          user: genius
-    target_file_path: app/chatbot/llama2_7B_chat/model.py
-    target_function_name: generate_response
-    kernel: python3
-
-  - type: deploy_model
-    entity_label: llama2_7b_chat
-    cpu: 4
-    memory: 32
-    gpu: 1
 
   - type: start_application
     name: API for Chatbot - DocGenuis AI

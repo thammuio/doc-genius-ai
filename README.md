@@ -96,7 +96,7 @@ This requires pip packages and models from huggingface. Depending on your CML ne
 - huggingface.co
 - pinecone.io (if using Pinecone)
 
-## Technologies Used
+### Technologies Used
 #### Open-Source Models and Utilities
 - [all-mpnet-base-v2](https://huggingface.co/sentence-transformers/sentence-transformers/all-mpnet-base-v2/resolve/main/all-mpnet-base-v2.tar.gz)
      - Vector Embeddings Generation Model
@@ -109,10 +109,10 @@ This requires pip packages and models from huggingface. Depending on your CML ne
 #### Chat API
 - [FastAPI](https://fastapi.tiangolo.com/)
 
-## Deploying on CML
+### Deploying on CML
 
 
-# Code Structure
+## Code Structure
 ```
 doc-genius-ai/
 ├── app/                      	# Application directory for API and Model Serving
@@ -136,7 +136,7 @@ doc-genius-ai/
 └── requirements.txt          	# Python dependencies for Model Serving
 ```
 
-# Interim Fixes
+## Interim Fixes
 1. Increase Ephemeral Storage Limit by navigating to CML Workspace -> Site Administration -> Settings -> Ephemeral Storage (in GB) and set it to a value >= 50
   - When a CML model is created, the model is loaded in the scratch space of a pod, LLM models are larger than the default 10 GB which causes issues during deployment.
 

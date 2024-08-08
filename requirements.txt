@@ -20,7 +20,8 @@ scipy
 sentence-transformers
 setuptools
 tensorflow
-tiktoken 
+tiktoken
+tf-keras
 torch
 transformers
 typing-extensions

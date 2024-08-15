@@ -2,9 +2,8 @@ from app.embeddings.chunk_utils import *
 import pinecone
 import json
 import requests
-from app.utils.model_access import get_model_access_key, MODEL_API_URL, HEADERS
 import os
-from model import chat_completion
+from app.chatbot.openai.model import chat_completion
 
 if os.getenv('VECTOR_DB').upper() == "MILVUS":
     from pymilvus import connections, Collection
@@ -28,7 +27,7 @@ def openai_chat(prompt, temperature, max_tokens, selected_vector_db, user):
 
     if selected_vector_db == "MILVUS":
         # Load Milvus Vector DB collection
-        vector_db_collection = Collection('cloudera_docs')
+        vector_db_collection = Collection('retail_kb')
         vector_db_collection.load()
 
     if user == "" or user is None:
@@ -56,28 +55,29 @@ def openai_chat(prompt, temperature, max_tokens, selected_vector_db, user):
         context_chunk = get_nearest_chunk_from_pinecone_vectordb(index, vdb_question)
 
 
-        # question = {'prompt': prompt, "temperature": temperature, "max_tokens": max_tokens, "context": context_chunk, "user": user}
-        # Example usage:
-        api_key = os.getenv('OPENAI_KEY')
-        model = "gpt-4o"
-        knowledge_base = context_chunk
-        messages = [
-            {"role": "system", "content": "You are an online retail store chatbot. You assist customers with their queries about products, orders, and returns."},
-            {"role": "user", "content": f"Customer Question is: \n{knowledge_base}"}
-        ]
-        # Call OpenAI Model
-        # response_dict = 
-        response = chat_completion(api_key, model, messages, knowledge_base)
+    # question = {'prompt': prompt, "temperature": temperature, "max_tokens": max_tokens, "context": context_chunk, "user": user}
+    # Example usage:
+    api_key = os.getenv('OPENAI_KEY')
+    model = "gpt-4o"
+    # knowledge_base = "No Returns Accepted: All sales are final. No returns, refunds, or exchanges. If you have any questions, please contact us at"
+    knowledge_base = context_chunk
+    messages = [
+        {"role": "system", "content": "You are an online retail store chatbot. You assist customers with their queries about products, orders, and returns."},
+        {"role": "user", "content": f"Customer Question is: \n{prompt}"}
+    ]
+    # Call OpenAI Model
+    # response_dict = 
+    response = chat_completion(api_key, model, messages, knowledge_base)
 
-        if "error" in response:
-            # Handle error
-            print(f"Error: {response['message']}")
-            return json.dumps({"answer": "Something went wrong! Try again later!"})
-        else:
-            # Handle successful response
-            completion = response['choices'][0]['message']['content']
-            print(f"Chatbot response: {completion}")
-            return {"answer": completion}
+    if "error" in response:
+        # Handle error
+        print(f"Error: {response['message']}")
+        return json.dumps({"answer": "Something went wrong! Try again later!"})
+    else:
+        # Handle successful response
+        completion = response['choices'][0]['message']['content']
+        print(f"Chatbot response: {completion}")
+        return {"answer": completion}
 
     # except Exception as e:
     #     return json.dumps({"answer": "Something went wrong! Try again later!"})

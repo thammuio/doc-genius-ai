@@ -8,6 +8,7 @@ from app.chatbot.llama3_8B_instruct.controller import llama_3_8b_instruct
 from app.chatbot.zephyr_7B_alpha.controller import zephyr_7B_alpha
 from app.chatbot.llama2_7B_chat_hf.controller import llama2_7b_chat_hf
 from app.chatbot.mistral_7B_instruct.controller import mistral_7b_instruct
+from app.chatbot.openai.controller import openai_chat
 
 # API Status
 status_router = APIRouter()
@@ -23,8 +24,8 @@ def check_api_status() -> dict[str, str]:
 # Chat
 # Map the model names to the functions
 model_methods = {
-    "llama2-7B-chat": llama_2_7b_chat
-    # "llama-2-13B-chat": llama_2_13b_chat,
+    "llama2-7B-chat": llama_2_7b_chat,
+    "openai-gpt-4o": openai_chat
     # "Meta-Llama-3-8B-Instruct": llama_3_8b_instruct,
     # "zephyr-7B-alpha": zephyr_7B_alpha,
     # "Llama-2-7b-chat-hf": llama2_7b_chat_hf,

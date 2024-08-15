@@ -31,6 +31,10 @@ def get_settings_data():
                 "link": "https://huggingface.co/TheBloke/Llama-2-7B-Chat-GGUF"
             },
             {
+                "name": "openai-gpt-4o",
+                "link": "https://huggingface.co/TheBloke/Llama-2-7B-Chat-GGUF"
+            },
+            {
                 "name": "llama2-13B-chat",
                 "link": "https://huggingface.co/TheBloke/Llama-2-13B-chat-GGUF"
             },

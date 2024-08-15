@@ -28,8 +28,11 @@ export default function ChatProvider({ children }) {
   const [userID, setUserID] = useState('genius');
   const [isFinishedConversation, setIsFinishedConversation] = useState();
   const domain = process.env.NEXT_PUBLIC_CHATBOT_API_DOMAIN;
-  const api = `https://docgenius-api.${domain}`;
-  const origin = `https://docgenius-ui.${domain}`;
+  // const api = `https://docgenius-api.${domain}`;
+  // const origin = `https://docgenius-ui.${domain}`;
+  const api = `http://localhost:9000`;
+  const origin = `http://localhost:3000`;
+
 
 
   useEffect(() => {

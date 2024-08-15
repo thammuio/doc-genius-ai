@@ -62,12 +62,12 @@ def openai_chat(prompt, temperature, max_tokens, selected_vector_db, user):
     # knowledge_base = "No Returns Accepted: All sales are final. No returns, refunds, or exchanges. If you have any questions, please contact us at"
     knowledge_base = context_chunk
     messages = [
-        {"role": "system", "content": "You are an online retail store chatbot. You assist customers with their queries about products, orders, and returns."},
+        {"role": "system", "content": f"You are a helpful and knowledgeable retail store assistant. Your role is to assist customers by answering their queries, providing product recommendations, and resolving issues using the latest information from our knowledge base. Here is the Retrieved context from \n{knowledge_base} based on user's questoion. Please answer based on this context only."},
         {"role": "user", "content": f"Customer Question is: \n{prompt}"}
     ]
     # Call OpenAI Model
     # response_dict = 
-    response = chat_completion(api_key, model, messages, knowledge_base)
+    response = chat_completion(api_key, model, messages)
 
     if "error" in response:
         # Handle error

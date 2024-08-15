@@ -1,14 +1,11 @@
 import requests
 
-def chat_completion(api_key, model, messages, knowledge_base):
+def chat_completion(api_key, model, messages):
     url = "https://api.openai.com/v1/chat/completions"
     headers = {
         "Content-Type": "application/json",
         "Authorization": f"Bearer {api_key}"
     }
-    # Add knowledge base to the messages
-    messages.insert(1, {"role": "system", "content": f"Knowledge Base: \n{knowledge_base}"})
-    
     payload = {
         "model": model,
         "messages": messages

@@ -20,6 +20,7 @@ def create_app():
     f"https://*.{CDSW_DOMAIN}",
     f"*.{CDSW_DOMAIN}",
     "*.cloudera.site",
+    "http://localhost:3000",
     ],
     allow_credentials=True,
     allow_methods=["*"],

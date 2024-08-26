@@ -58,7 +58,7 @@ async def chat_endpoint(payload: dict):
 
     # If the model is not supported, return a 400 error
     if model_method is None:
-        return {"answer": "Selected Model is currently not Available"}
+        return {"answer": "The selected model is temporarily unavailable. Please try again later or choose a different option."}
 
     # Call the model function with the parameters
     return model_method(prompt, temperature, max_tokens, vector_db, user)

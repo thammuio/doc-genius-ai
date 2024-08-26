@@ -235,7 +235,7 @@ export default function Chat() {
               </Button>
             </div>
             <small className="ml-2 text-gray-500 text-xs">
-              Current Model: {model?.name || "No Model selected"}
+              Current Model: <b>{model?.name || "No Model selected"}</b> | Generated content may be inaccurate. Check important info.
             </small>
           </form>
         </CardFooter>

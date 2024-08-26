@@ -32,7 +32,7 @@ def get_settings_data():
             },
             {
                 "name": "openai-gpt-4o",
-                "link": "https://huggingface.co/TheBloke/Llama-2-7B-Chat-GGUF"
+                "link": "https://openai.com/index/gpt-4-research/"
             },
             {
                 "name": "llama2-13B-chat",
@@ -74,5 +74,6 @@ def get_settings_data():
                 "name": "DistilBERT-base",
                 "link": "https://huggingface.co/distilbert-base-uncased"
             }
-        ]
+        ],
+        "sample_3_questions": [ "What is the Return Policy?", "How long does shipping take?", "What are the shipping options?" ]
     }

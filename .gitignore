@@ -9,6 +9,7 @@ scratchpad/
 llm-resource-calculator-for-cml/
 milvus-data/
 ps-amer-ai-lab/
+.env.local.sh
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

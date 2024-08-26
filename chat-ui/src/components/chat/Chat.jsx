@@ -27,12 +27,6 @@ import Image from 'next/image';
 import cmlicon from '../../images/cmlicon.svg';
 import cmltext from '../../images/cmltext-black.svg';
 
-const sampleQuestions = [
-  "What is Cloudera Machine Learning?",
-  "Does CML Supports MLOps?",
-  "Provide me List of Cloudera AMPs?",
-];
-
 
 export default function Chat() {
   const {
@@ -44,6 +38,7 @@ export default function Chat() {
     isWaiting,
     isFinishedConversation,
     isChatAvailable,
+    sampleQuestions,
   } = useContext(ChatContext);
   const [chatInput, setChatInput] = useState("");
   const [openConfigModal, setOpenConfigModal] = useState(false);

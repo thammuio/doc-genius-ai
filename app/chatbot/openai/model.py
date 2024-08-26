@@ -1,7 +1,6 @@
 import requests
 
-def chat_completion(api_key, model, messages):
-    url = "https://api.openai.com/v1/chat/completions"
+def chat_completion(url, api_key, model, messages):
     headers = {
         "Content-Type": "application/json",
         "Authorization": f"Bearer {api_key}"

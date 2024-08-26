@@ -57,8 +57,9 @@ def openai_chat(prompt, temperature, max_tokens, selected_vector_db, user):
 
     # question = {'prompt': prompt, "temperature": temperature, "max_tokens": max_tokens, "context": context_chunk, "user": user}
     # Example usage:
-    api_key = os.getenv('OPENAI_KEY')
-    model = "gpt-4o"
+    url = os.getenv('CAII_API_URL')
+    api_key = os.getenv('CAII_API_KEY')
+    model = os.getenv('CAII_MODEL')
     # knowledge_base = "No Returns Accepted: All sales are final. No returns, refunds, or exchanges. If you have any questions, please contact us at"
     knowledge_base = context_chunk
     messages = [
@@ -67,7 +68,7 @@ def openai_chat(prompt, temperature, max_tokens, selected_vector_db, user):
     ]
     # Call OpenAI Model
     # response_dict = 
-    response = chat_completion(api_key, model, messages)
+    response = chat_completion(url, api_key, model, messages)
 
     if "error" in response:
         # Handle error

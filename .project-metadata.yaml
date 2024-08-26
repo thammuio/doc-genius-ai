@@ -28,7 +28,15 @@ environment_variables:
   PROJECT_GIT_BRANCH:
     default: "main"
     description: "Enter the branch name for the git repo. The default is 'main' and can be changed to identify variations for organizations with multiple branches."
-  OPENAI_KEY:
+  CAII_API_URL:
+    default: ""
+    description: "If this is not set now, it will need to be configured for the application to function."
+    required: true
+  CAII_API_KEY:
+    default: ""
+    description: "If this is not set now, it will need to be configured for the application to function."
+    required: true
+  CAII_MODEL:
     default: ""
     description: "If this is not set now, it will need to be configured for the application to function."
     required: true

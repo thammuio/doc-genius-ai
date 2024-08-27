@@ -18,9 +18,10 @@ environment_variables:
   PINECONE_ENVIRONMENT:
     default: "gcp-starter"
     description: "Only Required for Pinecone Vector DB: Enter your Pinecone environment here. (Shown in API Keys page)"
-  PINECONE_INDEX:
+  KB_VECTOR_INDEX:
     default: "retail_kb"
-    description: "Only Required for Pinecone Vector DB: The default is 'cloudera-docs' and can be changed to identify variations for organizations with multiple indexes."
+    description: "If this is not set now, it will need to be configured for the application to function."
+    required: true
   NEXT_PUBLIC_CHATBOT_API_DOMAIN:
     default: "$CDSW_DOMAIN"
     description: "Required for building UI application: Enter the domain for the Chatbot API. This is the same as the CDSW_DOMAIN environment variable."

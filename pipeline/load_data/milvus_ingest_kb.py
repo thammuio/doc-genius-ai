@@ -11,6 +11,7 @@ import pandas as pd
 from sklearn.feature_extraction.text import TfidfVectorizer
 
 
+
 def create_milvus_collection(collection_name, dim):
     if utility.has_collection(collection_name):
         utility.drop_collection(collection_name)
@@ -46,28 +47,29 @@ def main():
 
         default_server.set_base_dir('milvus-data')
         default_server.start()
+        
 
         try:
             connections.connect(alias='default', host='localhost', port=default_server.listen_port)
             print(utility.get_server_version())
 
             # Create/Recreate the Milvus collection
-            collection_name = 'retail_kb'
+            kb_name = os.getenv('KB_VECTOR_INDEX')
+            collection_name = kb_name
             collection = create_milvus_collection(collection_name, 768)
 
             print("Milvus database is up and collection is created")
 
             # Read KB documents in ./data directory and insert embeddings into Vector DB for each doc
-            doc_dir = './data/retail_data'
+            doc_dir = f'./data/{kb_name}'
             for file in Path(doc_dir).glob(f'**/*.csv'):
                 print("Processing CSV file: %s" % file.name)
                 df = pd.read_csv(file)
 
                 for index, row in df.iterrows():
                     # Combine all relevant fields to create text for embedding
-                    text = f"Question ID: {row['Question ID']} Question: {row['Question']} Answer: {row['Answer']} Category: {row['Category']}"
+                    text = f"Question: {row['Question']} Answer: {row['Answer']}"
                     content = text  # Store the entire text as content
-                    print(f"Generating embedding for row {index}: {text}")
                     insert_embedding(collection, content, text)
 
             collection.flush()

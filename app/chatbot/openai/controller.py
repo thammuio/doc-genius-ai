@@ -4,6 +4,7 @@ import json
 import requests
 import os
 from app.chatbot.openai.model import chat_completion
+from app.prompts.controller import assemble_messages
 
 if os.getenv('VECTOR_DB').upper() == "MILVUS":
     from pymilvus import connections, Collection
@@ -13,6 +14,7 @@ if os.getenv('VECTOR_DB').upper() == "MILVUS":
 if os.getenv('VECTOR_DB').upper() == "PINECONE":
     from sentence_transformers import SentenceTransformer
 
+kb_name = os.getenv('KB_VECTOR_INDEX')
 
 # Helper function for generating responses for the QA app
 def openai_chat(prompt, temperature, max_tokens, selected_vector_db, user):
@@ -27,7 +29,8 @@ def openai_chat(prompt, temperature, max_tokens, selected_vector_db, user):
 
     if selected_vector_db == "MILVUS":
         # Load Milvus Vector DB collection
-        vector_db_collection = Collection('retail_kb')
+        kb_name = os.getenv('KB_VECTOR_INDEX')
+        vector_db_collection = Collection(kb_name)
         vector_db_collection.load()
 
     if user == "" or user is None:
@@ -44,7 +47,7 @@ def openai_chat(prompt, temperature, max_tokens, selected_vector_db, user):
     if selected_vector_db == "PINECONE":
         PINECONE_API_KEY = os.getenv('PINECONE_API_KEY')
         PINECONE_ENVIRONMENT = os.getenv('PINECONE_ENVIRONMENT')
-        PINECONE_INDEX = os.getenv('PINECONE_INDEX')
+        PINECONE_INDEX = os.getenv('KB_VECTOR_INDEX')
         pinecone.init(api_key=PINECONE_API_KEY, environment=PINECONE_ENVIRONMENT)
         index = pinecone.Index(PINECONE_INDEX)
 
@@ -62,10 +65,8 @@ def openai_chat(prompt, temperature, max_tokens, selected_vector_db, user):
     model = os.getenv('CAII_MODEL')
     # knowledge_base = "No Returns Accepted: All sales are final. No returns, refunds, or exchanges. If you have any questions, please contact us at"
     knowledge_base = context_chunk
-    messages = [
-        {"role": "system", "content": f"You are a helpful and knowledgeable retail store assistant. Your role is to assist customers by answering their queries, providing product recommendations, and resolving issues using the latest information from our knowledge base. Here is the Retrieved context from \n{knowledge_base} based on user's questoion. Please answer based on this context only."},
-        {"role": "user", "content": f"Customer Question is: \n{prompt}"}
-    ]
+    # Assemble messages
+    messages = assemble_messages(prompt, knowledge_base)
     # Call OpenAI Model
     # response_dict = 
     response = chat_completion(url, api_key, model, messages)

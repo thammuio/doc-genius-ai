@@ -2,7 +2,7 @@ import os
 import pinecone
 
 PINECONE_API_KEY = os.getenv('PINECONE_API_KEY')
-PINECONE_INDEX = os.getenv('PINECONE_INDEX')
+PINECONE_INDEX = os.getenv('KB_VECTOR_INDEX')
 
 # Initialize Pinecone
 pinecone.init(api_key=PINECONE_API_KEY)

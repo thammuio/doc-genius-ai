@@ -10,7 +10,8 @@ def get_nearest_chunk_from_milvus_vectordb(vector_db_collection, question):
     question_embedding = model_embedding.get_embeddings(question)
 
     # Connect to the Milvus collection
-    collection = Collection(name="retail_kb")
+    kb_name = os.getenv('KB_VECTOR_INDEX')
+    collection = Collection(name=kb_name)
     
     # Define search attributes for Milvus vector DB
     vector_db_search_params = {"metric_type": "IP", "params": {"nprobe": 10}}

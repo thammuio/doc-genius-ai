@@ -1,4 +1,16 @@
+import os
+
 def get_settings_data():
+    kb_vector_index = os.getenv('KB_VECTOR_INDEX', 'retail_kb')
+
+    sample_questions_map = {
+        'retail_kb': ["What is the Return Policy?", "How long does shipping take?", "What are the shipping options?"],
+        'transport_kb': ["What is the current route for truck #12345?", "Do I need to complete any specific forms after a vehicle inspection?", "Can you suggest an alternative route to avoid the road closure on Highway 50?"],
+        'itsystems_kb': ["How can I reset my corporate email password?", "What are the steps to connect to the company VPN on a new device?", "Can you guide me through the process of submitting a help desk ticket for a hardware issue?"]
+    }
+
+    sample_3_questions = sample_questions_map.get(kb_vector_index, sample_questions_map['retail_kb'])
+
     return {
         "temperature": 0.7,
         "max_tokens": 100,
@@ -27,12 +39,12 @@ def get_settings_data():
         "user_id": "genius",
         "models": [
             {
-                "name": "llama2-7B-chat",
-                "link": "https://huggingface.co/TheBloke/Llama-2-7B-Chat-GGUF"
-            },
-            {
                 "name": "openai-gpt-4o",
                 "link": "https://openai.com/index/gpt-4-research/"
+            },
+            {
+                "name": "llama2-7B-chat",
+                "link": "https://huggingface.co/TheBloke/Llama-2-7B-Chat-GGUF"
             },
             {
                 "name": "llama2-13B-chat",
@@ -75,5 +87,6 @@ def get_settings_data():
                 "link": "https://huggingface.co/distilbert-base-uncased"
             }
         ],
-        "sample_3_questions": [ "What is the Return Policy?", "How long does shipping take?", "What are the shipping options?" ]
+        "sample_3_questions": sample_3_questions,
+        "kb_name": kb_vector_index
     }

@@ -52,14 +52,15 @@ def main():
             print(utility.get_server_version())
 
             # Create/Recreate the Milvus collection
-            collection_name = 'retail_kb'
+            kb_name = os.getenv('KB_VECTOR_INDEX')
+            collection_name = kb_name
             collection = create_milvus_collection(collection_name, 768)
 
             print("Milvus database is up and collection is created")
 
             # Read KB documents in ./data directory and insert embeddings into Vector DB for each doc
             # The default embeddings generation model specified in this AMP only generates embeddings for the first 256 tokens of text.
-            doc_dir = './data/retail_data'
+            doc_dir = f'./data/{kb_name}'
             for file in Path(doc_dir).glob(f'**/*.csv'):
                 print("Processing CSV file: %s" % file.name)
                 df = pd.read_csv(file)

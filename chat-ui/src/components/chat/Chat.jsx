@@ -199,7 +199,7 @@ export default function Chat() {
                     onClick={(e) => {
                       handleSubmit(question);
                     }}
-                    className="w-full"
+                    className="w-full px-4 py-4 text-blue-500 text-xs"
                   >
                     {question}
                   </Button>

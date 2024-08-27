@@ -1,15 +1,18 @@
 from milvus import default_server
 from pymilvus import connections, utility
 import time
+import os
 
 # Initialize variables
 timeout_millis = 120000  # 2 minutes timeout
 check_interval_millis = 100  # 100 ms between each check
 elapsed_time_millis = 0
 
+kb_name = os.getenv('KB_VECTOR_INDEX')
+new_base_dir = f"milvus-data-{kb_name}"
 # Start Milvus Vector DB
 default_server.stop()
-default_server.set_base_dir('milvus-data')
+default_server.set_base_dir(new_base_dir)
 
 while elapsed_time_millis < timeout_millis:
     try:

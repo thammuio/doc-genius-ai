@@ -8,6 +8,8 @@ scratchpad/
 .metals/
 llm-resource-calculator-for-cml/
 milvus-data/
+milvus-data-*/
+milvus-data*/
 ps-amer-ai-lab/
 .env.local.sh
 

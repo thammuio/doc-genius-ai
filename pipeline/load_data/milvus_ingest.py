@@ -35,10 +35,9 @@ def insert_embedding(collection, id_path, text):
 
 def main():
   if os.getenv('VECTOR_DB').upper() == "MILVUS":
-    # Reset the vector database files
-    print(subprocess.run(["rm", "-rf", "milvus-data"], shell=False))
-
-    default_server.set_base_dir('milvus-data')
+    kb_name = os.getenv('KB_VECTOR_INDEX')
+    new_base_dir = f"milvus-data-{kb_name}"
+    default_server.set_base_dir(new_base_dir)
     default_server.start()
 
     try:

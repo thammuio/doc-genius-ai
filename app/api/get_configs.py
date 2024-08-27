@@ -5,7 +5,7 @@ def get_settings_data():
 
     sample_questions_map = {
         'retail_kb': ["What is the Return Policy?", "How long does shipping take?", "What are the shipping options?"],
-        'transport_kb': ["What is the current route for truck #12345?", "What is the status of the delivery for order #789?", "Can you suggest an alternative route to avoid the road closure on Highway 50?"],
+        'transport_kb': ["What is the current route for truck #12345?", "What is the status of the delivery for order #789?", "What are the HOS (Hours of Service) regulations for long-haul drivers?"],
         'itsystems_kb': ["How can I reset my corporate email password?", "How do I set up a virtual meeting room?", "How do I map a network drive?"]
     }
 

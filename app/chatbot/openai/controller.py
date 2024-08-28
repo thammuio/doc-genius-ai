@@ -5,6 +5,8 @@ import requests
 import os
 from app.chatbot.openai.model import chat_completion
 from app.prompts.controller import assemble_messages
+from app.agent.lookups import lookup_truck_id
+import re
 
 if os.getenv('VECTOR_DB').upper() == "MILVUS":
     from pymilvus import connections, Collection
@@ -58,6 +60,17 @@ def openai_chat(prompt, temperature, max_tokens, selected_vector_db, user):
         context_chunk = get_nearest_chunk_from_pinecone_vectordb(index, vdb_question)
 
 
+    # Check if prompt contains "truck" followed by a four or five-digit number prefixed with #
+    match = re.search(r'truck\s+#(\d{4,5})', prompt)
+    if match:
+        truck_id = match.group(1)
+        lookup_info = lookup_truck_id(truck_id)
+        lookup_info_str = json.dumps(lookup_info)
+    if lookup_info:
+        print(f"Truck info: {lookup_info}")
+    else:
+        print(f"No truck found with ID: {truck_id}")
+
     # question = {'prompt': prompt, "temperature": temperature, "max_tokens": max_tokens, "context": context_chunk, "user": user}
     # Example usage:
     url = os.getenv('CAII_API_URL')
@@ -65,8 +78,9 @@ def openai_chat(prompt, temperature, max_tokens, selected_vector_db, user):
     model = os.getenv('CAII_MODEL')
     # knowledge_base = "No Returns Accepted: All sales are final. No returns, refunds, or exchanges. If you have any questions, please contact us at"
     knowledge_base = context_chunk
+
     # Assemble messages
-    messages = assemble_messages(prompt, knowledge_base)
+    messages = assemble_messages(prompt, knowledge_base, lookup_info_str)
     # Call OpenAI Model
     # response_dict = 
     response = chat_completion(url, api_key, model, messages)

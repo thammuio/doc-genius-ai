@@ -61,15 +61,23 @@ def openai_chat(prompt, temperature, max_tokens, selected_vector_db, user):
 
 
     # Check if prompt contains "truck" followed by a four or five-digit number prefixed with #
-    match = re.search(r'truck\s+#(\d{4,5})', prompt)
-    if match:
-        truck_id = match.group(1)
-        lookup_info = lookup_truck_id(truck_id)
-        lookup_info_str = json.dumps(lookup_info)
-    if lookup_info:
-        print(f"Truck info: {lookup_info}")
-    else:
-        print(f"No truck found with ID: {truck_id}")
+    lookup_info_str = None
+    try:
+        match = re.search(r'truck\s+#(\d{4,5})', prompt)
+        if match:
+            truck_id = match.group(1)
+            lookup_info = lookup_truck_id(truck_id)
+            lookup_info_str = json.dumps(lookup_info)
+    except re.error as regex_error:
+        print(f"Regex error: {regex_error}")
+        lookup_info_str = None
+    except json.JSONDecodeError as json_error:
+        print(f"JSON error: {json_error}")
+        lookup_info_str = None
+    except Exception as e:
+        print(f"An unexpected error occurred: {e}")
+        lookup_info_str = None
+
 
     # question = {'prompt': prompt, "temperature": temperature, "max_tokens": max_tokens, "context": context_chunk, "user": user}
     # Example usage:

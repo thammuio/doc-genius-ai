@@ -39,6 +39,8 @@ export default function Chat() {
     isFinishedConversation,
     isChatAvailable,
     sampleQuestions,
+    chatbotName,
+    chatbotDesc,
   } = useContext(ChatContext);
   const [chatInput, setChatInput] = useState("");
   const [openConfigModal, setOpenConfigModal] = useState(false);
@@ -104,19 +106,19 @@ export default function Chat() {
       <Card className="max-w-5xl mx-auto h-full relative pb-0">
         <CardHeader ref={headerRef} className="pb-1 md:pb-1 lg:pb-2">
           <CardTitle className="text-xl lg:text-2xl">
-          {`DocGenius AI`}
+          {chatbotName}
             {isChatAvailable ? (
               <Button className="border-green-500 text-green-500 text-xs lg:text-sm px-1 lg:px-2 py-0 ml-2" variant="outline" size="xs">
                 <ShieldCheck className="mr-1" />Available
               </Button>
             ) : (
-              <Button className="border-red-500 text-red-500 text-xs lg:text-sm px-1 lg:px-2 py-0 ml-2" variant="outline" size="xs">
+              <Button className="border-gray-500 text-gray-500 text-xs lg:text-sm px-1 lg:px-2 py-0 ml-2" variant="outline" size="xs">
                 <ShieldX className="mr-1" /> Not Available
               </Button>
             )}
           </CardTitle>
           <CardDescription className="hidden md:block">
-            Generative AI Chatbot for your Documents!
+            {chatbotDesc}
           </CardDescription>
           <hr className="w-full md:w-3/5" />
           <div className="flex flex-row items-center gap-2">
@@ -179,7 +181,7 @@ export default function Chat() {
                     className="flex gap-2"
                   >
                     <MoveUpRight className="h-4 w-4" />
-                    <small>Model page</small>
+                    <small>Model details</small>
                   </Link>
                 </Button>
               </CardContent>

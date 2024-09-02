@@ -18,7 +18,9 @@ def check_api_status() -> dict[str, str]:
 # Chat
 # Map the model names to the functions
 model_methods = {
-    "openai-gpt-4o": openai_chat
+    "llama-31-8b-instruct": openai_chat,
+    "llama-31-70b-instruct": openai_chat
+    #"openai-gpt-4o": openai_chat
     # "Meta-Llama-3-8B-Instruct": llama_3_8b_instruct,
     # "zephyr-7B-alpha": zephyr_7B_alpha,
     # "Llama-2-7b-chat-hf": llama2_7b_chat_hf,

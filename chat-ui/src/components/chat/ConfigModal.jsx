@@ -74,14 +74,15 @@ export function ConfigModal({ open, setOpen }) {
       <SheetTrigger asChild></SheetTrigger>
       <SheetContent>
         <SheetHeader>
-          <SheetTitle>Chatbot Configuration</SheetTitle>
-          <SheetDescription>Configure your chatbot settings</SheetDescription>
+          <SheetTitle>Settings</SheetTitle>
+          {/* <SheetDescription>Configure your chatbot settings</SheetDescription> */}
         </SheetHeader>
+        <hr />
         <div className="grid gap-4 py-4">
 
           <div className="flex justify-end items-center gap-4">
             <Label htmlFor="name" className="text-right whitespace-nowrap">
-              Model
+              Inference Model
             </Label>
             <Select
               className="col-span-1"
@@ -102,6 +103,30 @@ export function ConfigModal({ open, setOpen }) {
               </SelectContent>
             </Select>
           </div>
+          <div className="flex justify-end items-center gap-4">
+            <Label htmlFor="name" className="text-right whitespace-nowrap">
+              Vector Database
+            </Label>
+            <Select
+              className="col-span-1"
+              value={vectorDatabase?.name}
+              onValueChange={(value) => handleSetVectorDatabase(value)}
+            >
+              <SelectTrigger className="w-auto">
+                <SelectValue placeholder="Select a Vector DB" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectGroup>
+                { (vectorDatabases || []).map((item) => (
+                    <SelectItem key={item.name} value={item.name}>
+                      {item.name}
+                    </SelectItem>
+                  ))}
+                </SelectGroup>
+              </SelectContent>
+            </Select>
+          </div>
+          <hr style={{ width: '50%', margin: '0 auto' }} />
           <div className="flex justify-end items-center gap-4">
             <Label htmlFor="temperature" className="text-right whitespace-nowrap">
               Temperature
@@ -126,38 +151,17 @@ export function ConfigModal({ open, setOpen }) {
               onChange={(e) => setMaxTokens(e.target.value)}
             />
           </div>
+          <hr style={{ width: '50%', margin: '0 auto' }} />
           <div className="flex justify-end items-center gap-4">
-            <Label htmlFor="name" className="text-right whitespace-nowrap">
-              Vector dB
-            </Label>
-            <Select
-              className="col-span-1"
-              value={vectorDatabase?.name}
-              onValueChange={(value) => handleSetVectorDatabase(value)}
-            >
-              <SelectTrigger className="w-auto">
-                <SelectValue placeholder="Select a Vector DB" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectGroup>
-                { (vectorDatabases || []).map((item) => (
-                    <SelectItem key={item.name} value={item.name}>
-                      {item.name}
-                    </SelectItem>
-                  ))}
-                </SelectGroup>
-              </SelectContent>
-            </Select>
-          </div>
-        <div className="flex justify-end items-center gap-4">
             <Label htmlFor="userID" className="text-right whitespace-nowrap">
-              User ID
+              Assistant Name
             </Label>
             <Input
               id="userID"
               type="text"
               value={userID}
               onChange={(e) => setUserID(e.target.value)}
+              disabled
             />
           </div>
 

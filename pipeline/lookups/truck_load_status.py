@@ -63,15 +63,15 @@ def main():
         create_table(conn)
 
         # Insert a few records
-        insert_truck_status(conn, "12345", "In Transit", "Route A", "Encountered heavy traffic near city center, still on schedule", "High-priority delivery with sensitive cargo")
+        insert_truck_status(conn, "LOG-TRK-7563", "In Transit", "Route A", "Encountered heavy traffic near city center, still on schedule", "High-priority delivery with sensitive cargo")
 
         # Truck 78567 has successfully completed its delivery on Route B. The driver noted that the delivery was completed
         # ahead of time, and the customer was satisfied. The additional info indicates that the truck is now heading back to the depot for routine maintenance.
-        insert_truck_status(conn, "78567", "Delivered", "Route B", "Delivery completed ahead of time, customer satisfied", "Returning to depot for routine maintenance")
+        insert_truck_status(conn, "LOG-TRK-5436", "Delivered", "Route B", "Delivery completed ahead of time, customer satisfied", "Returning to depot for routine maintenance")
 
         # Truck 56789 is delayed on Route B due to an unexpected road closure caused by an accident. The driver noted
         # that they have taken a detour, but the new route will add an estimated 2 hours to the delivery time. Additional info mentions that the driver has informed the customer about the delay.
-        insert_truck_status(conn, "56789", "Delayed", "Route B", "Delayed due to road closure, taking detour with 2 hours additional time", "Customer informed about the delay")
+        insert_truck_status(conn, "LOG-TRK-9922", "Delayed", "Route B", "Delayed due to road closure, taking detour with 2 hours additional time", "Customer informed about the delay")
         # Query all records
         print("All truck statuses:")
         select_all_truck_status(conn)

@@ -26,6 +26,8 @@ export default function ChatProvider({ children }) {
   const [temperature, setTemperature] = useState(0.7);
   const [maxTokens, setMaxTokens] = useState(100);
   const [userID, setUserID] = useState('genius');
+  const [chatbotName, setChatbotName] = useState('DocGenius AI');
+  const [chatbotDesc, setChatbotDesc] = useState('Generative AI Chatbot for your Documents!');
   const [sampleQuestions, setSampleQuestions] = useState([]);
   const [isFinishedConversation, setIsFinishedConversation] = useState();
   const domain = process.env.NEXT_PUBLIC_CHATBOT_API_DOMAIN;
@@ -60,6 +62,12 @@ export default function ChatProvider({ children }) {
           }
           if (data?.user_id) {
             setUserID(data.user_id);
+          }
+          if (data?.chatbot_name) {
+            setChatbotName(data.chatbot_name);
+          }
+          if (data?.chatbot_desc) {
+            setChatbotDesc(data.chatbot_desc);
           }
           if (data?.sample_3_questions) {
             setSampleQuestions(data.sample_3_questions);
@@ -194,6 +202,10 @@ export default function ChatProvider({ children }) {
       isFinishedConversation,
       userID,
       setUserID,
+      chatbotName,
+      setChatbotName,
+      chatbotDesc,
+      setChatbotDesc,
       vectorDatabases,
       vectorDatabase,
       setVectorDatabase,
@@ -221,6 +233,10 @@ export default function ChatProvider({ children }) {
       isFinishedConversation,
       userID,
       setUserID,
+      chatbotName,
+      setChatbotName,
+      chatbotDesc,
+      setChatbotDesc,
       vectorDatabase,
       vectorDatabases,
       setVectorDatabase,

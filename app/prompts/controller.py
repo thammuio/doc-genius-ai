@@ -27,7 +27,7 @@ def generate_system_message(knowledge_base, lookup_info_str):
         
         Answer the question based on the context below. Keep the answer short and concise. Respond \"Unsure about answer fro this. I'll be happy to assist you on other queries!\" if not sure about the answer.
         """
-        if lookup_info_str:
+        if lookup_info_str is not None and lookup_info_str.strip():
             CONTENT += f"\nHere is the realtime Context Info on this Question as well: {lookup_info_str}"
         else:
             CONTENT += f"\nContext: {knowledge_base}"

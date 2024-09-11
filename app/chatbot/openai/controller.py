@@ -19,7 +19,7 @@ if os.getenv('VECTOR_DB').upper() == "PINECONE":
 kb_name = os.getenv('KB_VECTOR_INDEX')
 
 # Helper function for generating responses for the QA app
-def openai_chat(prompt, temperature, max_tokens, selected_vector_db, user):
+def openai_chat(prompt, temperature, max_tokens, selected_vector_db, user, model_url, model_name, model_key):
     if prompt == "" or temperature == "" or max_tokens is None:
         return "One or more fields have not been specified."
     
@@ -82,10 +82,7 @@ def openai_chat(prompt, temperature, max_tokens, selected_vector_db, user):
         lookup_info_str = None
 
     # question = {'prompt': prompt, "temperature": temperature, "max_tokens": max_tokens, "context": context_chunk, "user": user}
-    # Example usage:
-    url = os.getenv('CAII_API_URL')
-    api_key = os.getenv('CAII_API_KEY')
-    model = os.getenv('CAII_MODEL')
+
     # knowledge_base = "No Returns Accepted: All sales are final. No returns, refunds, or exchanges. If you have any questions, please contact us at"
     knowledge_base = context_chunk
 
@@ -93,7 +90,7 @@ def openai_chat(prompt, temperature, max_tokens, selected_vector_db, user):
     messages = assemble_messages(prompt, knowledge_base, lookup_info_str)
     # Call OpenAI Model
     # response_dict = 
-    response = chat_completion(url, api_key, model, messages)
+    response = chat_completion(model_url, model_key, model_name, messages)
 
     if "error" in response:
         # Handle error

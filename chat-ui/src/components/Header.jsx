@@ -17,8 +17,13 @@ import {
 } from "@components/ui/popover";
 import { Menu } from "lucide-react";
 import logo from '../images/cloudera-newco-logo.svg';
+// import cnowlogo from '../images/cnow-logo.png';
 
 const menuItems = [
+  {
+    name: "Try Cloudera",
+    href: "https://trycloudera.com",
+  },
   {
     name: "Products",
     href: "https://www.cloudera.com/products.html",
@@ -28,16 +33,12 @@ const menuItems = [
     href: "https://www.cloudera.com/solutions.html",
   },
   {
-    name: "Downloads",
-    href: "https://www.cloudera.com/downloads.html",
+    name: "Resources",
+    href: "https://www.cloudera.com/resources.html",
   },
   {
     name: "Support",
-    href: "https://my.cloudera.com/",
-  },
-  {
-    name: "Community",
-    href: "https://community.cloudera.com/",
+    href: "https://www.cloudera.com/services-and-support.html",
   },
 ];
 
@@ -48,12 +49,12 @@ const navigation = [
 
 export default function Header() {
   return (
-    <header className="flex py-2 justify-between px-8 bg-[#132329]">
+    <header className="flex py-2 justify-between px-8 bg-white">
       <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%' }}>
         <Image
           src={logo}
-          alt="Cloudera Documentation"
-          style={{ height: '50%', width: 'auto', objectFit: 'contain' }}
+          alt="Cloudera Logo"
+          style={{ height: '70%', width: 'auto', objectFit: 'contain' }}
         />
       </div>
       <Popover>
@@ -88,7 +89,7 @@ export default function Header() {
             {menuItems.map((item) => (
               <Link href={item.href} legacyBehavior passHref>
                 <NavigationMenuLink
-                  className="bg-transparent text-white py-2 border-[#132329] border-solid border-b-[1px] hover:border-white"
+                  className="bg-transparent text-black py-2 border-white border-solid border-b-[1px] hover:border-[#132329]"
                   target="_blank"
                   rel="noopener noreferrer"
                 >

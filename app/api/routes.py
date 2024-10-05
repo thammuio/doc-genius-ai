@@ -1,13 +1,25 @@
-from fastapi import APIRouter
-from fastapi import HTTPException
+from fastapi import APIRouter, HTTPException
 from fastapi.responses import RedirectResponse
 from app.api.get_configs import get_settings_data
-from app.chatbot.llama2_7B_chat.controller import llama_2_7b_chat
-from app.chatbot.llama2_13B_chat.controller import llama_2_13b_chat
-from app.chatbot.llama3_8B_instruct.controller import llama_3_8b_instruct
-from app.chatbot.zephyr_7B_alpha.controller import zephyr_7B_alpha
-from app.chatbot.llama2_7B_chat_hf.controller import llama2_7b_chat_hf
-from app.chatbot.mistral_7B_instruct.controller import mistral_7b_instruct
+from app.chatbot.caii.controller import caii_chat
+import os
+import json
+
+# Load the MODEL_DETAILS environment variable
+try:
+    model_details_json = os.getenv('MODEL_DETAILS')
+    if model_details_json is None:
+        raise ValueError("MODEL_DETAILS variable is not set")
+    
+    # Parse the JSON string
+    model_details = json.loads(model_details_json)
+except (ValueError, json.JSONDecodeError) as e:
+    print(f"Error loading model details: {e}")
+    model_details = []
+
+# Create a dictionary to map model names to their details
+model_details_dict = {model['model_name']: model for model in model_details}
+
 
 # API Status
 status_router = APIRouter()
@@ -20,16 +32,12 @@ def root():
 def check_api_status() -> dict[str, str]:
     return {"api_status":"Healthy"}
 
-# Chat
 # Map the model names to the functions
-model_methods = {
-    "llama2-7B-chat": llama_2_7b_chat
-    # "llama-2-13B-chat": llama_2_13b_chat,
-    # "Meta-Llama-3-8B-Instruct": llama_3_8b_instruct,
-    # "zephyr-7B-alpha": zephyr_7B_alpha,
-    # "Llama-2-7b-chat-hf": llama2_7b_chat_hf,
-    # "Mistral-7B-Instruct": mistral_7b_instruct
-}
+model_methods = {}
+for model in model_details:
+    model_name = model['model_name']
+    model_methods[model_name] = caii_chat
+
 
 chat_router = APIRouter()
 
@@ -64,11 +72,20 @@ async def chat_endpoint(payload: dict):
 
     # If the model is not supported, return a 400 error
     if model_method is None:
-        return {"answer": "Selected Model is currently not Available"}
+        return {"answer": "The selected model is temporarily unavailable. Please try again later or choose a different option."}
+
+    # Get the model details from the dictionary
+    model_detail = model_details_dict.get(selected_model)
+    if not model_detail:
+        raise ValueError("Model details not found for the selected model")
+
+
+    model_key = model_detail['model_key']
+    model_url = model_detail['model_url']
+    model_name = model_detail['model_name']
 
     # Call the model function with the parameters
-    return model_method(prompt, temperature, max_tokens, vector_db, user)
-
+    return model_method(prompt, temperature, max_tokens, vector_db, user, model_url, model_name, model_key)
 
 # Settings
 settings_router = APIRouter()

@@ -16,13 +16,13 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning>
         <head>
-        <title>DocGenius AI | Generative AI Chatbot - powered by CML</title>
+        <title>DocGenius AI | Generative AI Chatbot - powered by Cloudera</title>
         <link rel="shortcut icon" href="https://raw.githubusercontent.com/thammuio/doc-genius-ai/main/chat-ui/src/images/favicon.ico" />
         <meta
           name="description"
           content="Generative AI Chatbot for your Documentation"
         />
-        <meta property="og:title" content="DocGenius AI | Generative AI Chatbot - powered by CML" />
+        <meta property="og:title" content="DocGenius AI | Generative AI Chatbot - powered by Cloudera" />
         <meta
           property="og:description"
           content="Generative AI Chatbot for your Documentation"
@@ -32,7 +32,7 @@ export default function RootLayout({ children }) {
         <meta name="twitter:title" content="DocGenius AI" />
         <meta
           name="twitter:description"
-          content="Generative AI Chatbot for your Documentation - powered by CML"
+          content="Generative AI Chatbot for your Documentation - powered by Cloudera"
         />
         <meta name="twitter:image" content="https://raw.githubusercontent.com/thammuio/doc-genius-ai/main/images/doc-genius-ai.png" />
       </head>

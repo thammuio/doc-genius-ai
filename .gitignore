@@ -8,6 +8,11 @@ scratchpad/
 .metals/
 llm-resource-calculator-for-cml/
 milvus-data/
+milvus-data-*/
+milvus-data*/
+ps-amer-ai-lab/
+.env.local.sh
+app/chatbot/caii/caii.py
 ps-amer-ai-lab/
 
 # Byte-compiled / optimized / DLL files

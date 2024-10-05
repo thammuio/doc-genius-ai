@@ -16,6 +16,9 @@ module.exports = {
       },
     },
     extend: {
+      fontSize: {
+        'xxs': '0.625rem', // Custom size for extra extra small text
+      },
       colors: {
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',

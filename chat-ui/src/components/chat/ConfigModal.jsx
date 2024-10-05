@@ -74,9 +74,10 @@ export function ConfigModal({ open, setOpen }) {
       <SheetTrigger asChild></SheetTrigger>
       <SheetContent>
         <SheetHeader>
-          <SheetTitle>Chatbot Configuration</SheetTitle>
-          <SheetDescription>Configure your chatbot settings</SheetDescription>
+          <SheetTitle>Settings</SheetTitle>
+          {/* <SheetDescription>Configure your chatbot settings</SheetDescription> */}
         </SheetHeader>
+        <hr />
         <div className="grid gap-4 py-4">
 
           <div className="flex justify-end items-center gap-4">
@@ -118,17 +119,6 @@ export function ConfigModal({ open, setOpen }) {
           <div className="flex justify-end items-center gap-4">
             <Label htmlFor="maxTokens" className="text-right whitespace-nowrap">
               Number of Tokens <br /> <small>(Length of Response)</small>
-            </Label>
-            <Input
-              id="maxTokens"
-              type="number"
-              value={maxTokens}
-              onChange={(e) => setMaxTokens(e.target.value)}
-            />
-          </div>
-          <div className="flex justify-end items-center gap-4">
-            <Label htmlFor="name" className="text-right whitespace-nowrap">
-              Vector dB
             </Label>
             <Select
               className="col-span-1"

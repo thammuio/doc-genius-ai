@@ -4,6 +4,10 @@ import app.embeddings.embeddings_utils as model_embedding
 from pathlib import Path
 import pinecone
 from sentence_transformers import SentenceTransformer
+from pathlib import Path
+import os
+import csv
+import PyPDF2
 
 VECTOR_DB = os.getenv('VECTOR_DB').upper()
 PINECONE_API_KEY = os.getenv('PINECONE_API_KEY')
@@ -59,14 +63,30 @@ def main():
             print("Pinecone index is up and collection is created")
 
             # Read KB documents in ./data directory and insert embeddings into Vector DB for each doc
-            doc_dir = './data'
-            for file in Path(doc_dir).glob(f'**/*.txt'):
-                with open(file, "r") as f: # Open file in read mode
-                    print("Generating embeddings for: %s" % file.name)
-                    text = f.read()
-                    insert_embedding(collection, os.path.abspath(file), text)
+            doc_dir = f'./data/{PINECONE_INDEX}'
+            for file in Path(doc_dir).glob(f'**/*'):
+                if file.suffix == '.txt':
+                    with open(file, "r") as f:  # Open file in read mode
+                        print("Generating embeddings for: %s" % file.name)
+                        text = f.read()
+                        insert_embedding(collection, os.path.abspath(file), text)
+                elif file.suffix == '.csv':
+                    with open(file, "r") as f:  # Open file in read mode
+                        print("Generating embeddings for: %s" % file.name)
+                        reader = csv.reader(f)
+                        text = "\n".join([" ".join(row) for row in reader])
+                        insert_embedding(collection, os.path.abspath(file), text)
+                elif file.suffix == '.pdf':
+                    with open(file, "rb") as f:  # Open file in binary read mode
+                        print("Generating embeddings for: %s" % file.name)
+                        reader = PyPDF2.PdfFileReader(f)
+                        text = ""
+                        for page_num in range(reader.numPages):
+                            page = reader.getPage(page_num)
+                            text += page.extract_text()
+                        insert_embedding(collection, os.path.abspath(file), text)
+            
             print('Finished loading Knowledge Base embeddings into Pinecone')
-
         except Exception as e:
             raise (e)
 

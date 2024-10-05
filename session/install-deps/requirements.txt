@@ -20,3 +20,4 @@ sentence-transformers
 setuptools
 flask
 cmlapi
+openai

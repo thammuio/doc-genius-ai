@@ -3,7 +3,7 @@ import pinecone
 import json
 import requests
 import os
-from app.chatbot.openai.model import chat_completion
+from app.chatbot.caii.model import chat_completion
 from app.prompts.controller import assemble_messages
 from app.agent.lookups import lookup_truck_id
 import re
@@ -19,7 +19,7 @@ if os.getenv('VECTOR_DB').upper() == "PINECONE":
 kb_name = os.getenv('KB_VECTOR_INDEX')
 
 # Helper function for generating responses for the QA app
-def openai_chat(prompt, temperature, max_tokens, selected_vector_db, user, model_url, model_name, model_key):
+def caii_chat(prompt, temperature, max_tokens, selected_vector_db, user, model_url, model_name, model_key):
     if prompt == "" or temperature == "" or max_tokens is None:
         return "One or more fields have not been specified."
     
@@ -59,37 +59,11 @@ def openai_chat(prompt, temperature, max_tokens, selected_vector_db, user, model
 
         context_chunk = get_nearest_chunk_from_pinecone_vectordb(index, vdb_question)
 
-
-    # Check if prompt contains "truck" followed by a four or five-digit number prefixed with #
-    lookup_info_str = None
-    try:
-        match = re.search(r'LOG-TRK-(\d{4})', prompt)
-        if match:
-            truck_id = match.group(1)
-            lookup_info = lookup_truck_id(truck_id)
-            if lookup_info is None:
-                lookup_info_str = None
-            else:
-                lookup_info_str = json.dumps(lookup_info)
-    except re.error as regex_error:
-        print(f"Regex error: {regex_error}")
-        lookup_info_str = None
-    except json.JSONDecodeError as json_error:
-        print(f"JSON error: {json_error}")
-        lookup_info_str = None
-    except Exception as e:
-        print(f"An unexpected error occurred: {e}")
-        lookup_info_str = None
-
-    # question = {'prompt': prompt, "temperature": temperature, "max_tokens": max_tokens, "context": context_chunk, "user": user}
-
-    # knowledge_base = "No Returns Accepted: All sales are final. No returns, refunds, or exchanges. If you have any questions, please contact us at"
     knowledge_base = context_chunk
 
     # Assemble messages
-    messages = assemble_messages(prompt, knowledge_base, lookup_info_str)
-    # Call OpenAI Model
-    # response_dict = 
+    messages = assemble_messages(prompt, knowledge_base)
+    # Call CAAI Model
     response = chat_completion(model_url, model_key, model_name, messages)
 
     if "error" in response:

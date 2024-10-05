@@ -2,7 +2,7 @@ import os
 
 chatbot_type = os.getenv('KB_VECTOR_INDEX')
 
-def generate_system_message(knowledge_base, lookup_info_str):
+def generate_system_message(knowledge_base):
     CONTENT = ""
 
     if chatbot_type == 'retail_kb':
@@ -18,19 +18,6 @@ def generate_system_message(knowledge_base, lookup_info_str):
                 
         Context: {knowledge_base}
         """
-    elif chatbot_type == 'transport_kb':
-        CONTENT = f"""You are an AI assistant for ACME Logistics, a leading trucking and logistics company. Your primary function is to provide accurate, real-time support to the company’s dispatchers, drivers, and customers.
-        
-        You handle tasks such as tracking shipments, optimizing delivery routes, providing updates on delivery times, managing fleet maintenance schedules, and addressing any logistics-related inquiries.
-        
-        Your responses should be prompt, informative, and aligned with ACME Logistics’ commitment to reliability, efficiency, and customer satisfaction. Maintain a professional and courteous tone at all times, and ensure that all interactions reflect ACME Logistics’ values of safety, timeliness, and quality service.
-        
-        Answer the question based on the context below. Keep the answer short and concise. Respond \"Unsure about answer fro this. I'll be happy to assist you on other queries!\" if not sure about the answer.
-        """
-        if lookup_info_str is not None and lookup_info_str.strip():
-            CONTENT += f"\nHere is the realtime Context Info on this Question as well: {lookup_info_str}"
-        else:
-            CONTENT += f"\nContext: {knowledge_base}"
     elif chatbot_type == 'itsystems_kb':
         CONTENT = f"""You are an AI assistant for ACME Tech's Internal IT Helpdesk. Your primary function is to provide quick and accurate support to the company’s employees regarding IT-related issues.
         
@@ -43,8 +30,7 @@ def generate_system_message(knowledge_base, lookup_info_str):
         Context: {knowledge_base}
         """
     else:
-        CONTENT = ""
-    print(CONTENT)  # Add this line to print the CONTENT variable     
+        CONTENT = ""    
     
     return {
         "role": "system",
@@ -54,11 +40,11 @@ def generate_system_message(knowledge_base, lookup_info_str):
 def generate_user_message(prompt):
     return {
         "role": "user",
-        "content": f"Customer Question is: \n{prompt}"
+        "content": f"User Question is: \n{prompt}"
     }
 
-def assemble_messages(prompt, knowledge_base, lookup_info_str):
+def assemble_messages(prompt, knowledge_base):
     return [
-        generate_system_message(knowledge_base, lookup_info_str),
+        generate_system_message(knowledge_base),
         generate_user_message(prompt)
     ]

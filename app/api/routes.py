@@ -1,7 +1,7 @@
 from fastapi import APIRouter, HTTPException
 from fastapi.responses import RedirectResponse
 from app.api.get_configs import get_settings_data
-from app.chatbot.openai.controller import openai_chat
+from app.chatbot.caii.controller import caii_chat
 import os
 import json
 
@@ -35,12 +35,7 @@ def check_api_status() -> dict[str, str]:
 model_methods = {}
 for model in model_details:
     model_name = model['model_name']
-    if model_name == "llama-31-8b-instruct":
-        model_methods[model_name] = openai_chat
-    elif model_name == "llama-31-70b-instruct":
-        model_methods[model_name] = openai_chat
-    elif model_name == "gpt-4o":
-        model_methods[model_name] = openai_chat
+    model_methods[model_name] = caii_chat
 
 chat_router = APIRouter()
 

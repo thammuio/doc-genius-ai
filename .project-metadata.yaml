@@ -1,10 +1,10 @@
 name: DocGenius AI - Generative AI Chatbot
 description: |
-  Generative AI Chatbot for your Documents Powered by CML
+  Generative AI Chatbot for your Documents powered by Cloudera
 
 author: Suri Nuthalapati
-specification_version: 0.8
-prototype_version: 0.8
+specification_version: 01.0
+prototype_version: 1.0
 date: "2024-04-25"
 
 environment_variables:
@@ -29,17 +29,9 @@ environment_variables:
   PROJECT_GIT_BRANCH:
     default: "main"
     description: "Enter the branch name for the git repo. The default is 'main' and can be changed to identify variations for organizations with multiple branches."
-  CAII_API_URL:
+  MODEL_DETAILS:
     default: ""
-    description: "If this is not set now, it will need to be configured for the application to function."
-    required: true
-  CAII_API_KEY:
-    default: ""
-    description: "If this is not set now, it will need to be configured for the application to function."
-    required: true
-  CAII_MODEL:
-    default: ""
-    description: "If this is not set now, it will need to be configured for the application to function."
+    description: "json string with model details"
     required: true
   HF_TOKEN:
     default: ""

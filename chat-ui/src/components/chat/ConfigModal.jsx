@@ -104,8 +104,21 @@ export function ConfigModal({ open, setOpen }) {
             </Select>
           </div>
           <div className="flex justify-end items-center gap-4">
-            <Label htmlFor="name" className="text-right whitespace-nowrap">
-              Vector Database
+            <Label htmlFor="temperature" className="text-right whitespace-nowrap">
+              Temperature
+              <br />
+              <small>(Randomness of Response)</small>
+            </Label>
+            <Input
+              id="temperature"
+              type="number"
+              value={temperature}
+              onChange={(e) => setTemperature(e.target.value)}
+            />
+          </div>
+          <div className="flex justify-end items-center gap-4">
+            <Label htmlFor="maxTokens" className="text-right whitespace-nowrap">
+              Number of Tokens <br /> <small>(Length of Response)</small>
             </Label>
             <Select
               className="col-span-1"
@@ -125,6 +138,17 @@ export function ConfigModal({ open, setOpen }) {
                 </SelectGroup>
               </SelectContent>
             </Select>
+          </div>
+        <div className="flex justify-end items-center gap-4">
+            <Label htmlFor="userID" className="text-right whitespace-nowrap">
+              User ID
+            </Label>
+            <Input
+              id="userID"
+              type="text"
+              value={userID}
+              onChange={(e) => setUserID(e.target.value)}
+            />
           </div>
 
 

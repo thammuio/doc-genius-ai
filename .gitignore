@@ -13,6 +13,8 @@ milvus-data*/
 ps-amer-ai-lab/
 .env.local.sh
 app/chatbot/caii/caii.py
+ps-amer-ai-lab/
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

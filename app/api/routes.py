@@ -20,6 +20,7 @@ except (ValueError, json.JSONDecodeError) as e:
 # Create a dictionary to map model names to their details
 model_details_dict = {model['model_name']: model for model in model_details}
 
+
 # API Status
 status_router = APIRouter()
 
@@ -36,6 +37,7 @@ model_methods = {}
 for model in model_details:
     model_name = model['model_name']
     model_methods[model_name] = caii_chat
+
 
 chat_router = APIRouter()
 
@@ -76,6 +78,7 @@ async def chat_endpoint(payload: dict):
     model_detail = model_details_dict.get(selected_model)
     if not model_detail:
         raise ValueError("Model details not found for the selected model")
+
 
     model_key = model_detail['model_key']
     model_url = model_detail['model_url']

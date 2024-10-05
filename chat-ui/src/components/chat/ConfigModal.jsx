@@ -82,7 +82,7 @@ export function ConfigModal({ open, setOpen }) {
 
           <div className="flex justify-end items-center gap-4">
             <Label htmlFor="name" className="text-right whitespace-nowrap">
-              Inference Model
+              Model
             </Label>
             <Select
               className="col-span-1"
@@ -125,44 +125,6 @@ export function ConfigModal({ open, setOpen }) {
                 </SelectGroup>
               </SelectContent>
             </Select>
-          </div>
-          <hr style={{ width: '50%', margin: '0 auto' }} />
-          <div className="flex justify-end items-center gap-4">
-            <Label htmlFor="temperature" className="text-right whitespace-nowrap">
-              Temperature
-              <br />
-              <small>(Randomness of Response)</small>
-            </Label>
-            <Input
-              id="temperature"
-              type="number"
-              value={temperature}
-              onChange={(e) => setTemperature(e.target.value)}
-            />
-          </div>
-          <div className="flex justify-end items-center gap-4">
-            <Label htmlFor="maxTokens" className="text-right whitespace-nowrap">
-              Number of Tokens <br /> <small>(Length of Response)</small>
-            </Label>
-            <Input
-              id="maxTokens"
-              type="number"
-              value={maxTokens}
-              onChange={(e) => setMaxTokens(e.target.value)}
-            />
-          </div>
-          <hr style={{ width: '50%', margin: '0 auto' }} />
-          <div className="flex justify-end items-center gap-4">
-            <Label htmlFor="userID" className="text-right whitespace-nowrap">
-              Assistant Name
-            </Label>
-            <Input
-              id="userID"
-              type="text"
-              value={userID}
-              onChange={(e) => setUserID(e.target.value)}
-              disabled
-            />
           </div>
 
 

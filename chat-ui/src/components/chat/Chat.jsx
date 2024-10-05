@@ -26,7 +26,7 @@ import Link from "next/link";
 import Image from 'next/image';
 import cmlicon from '../../images/cmlicon.svg';
 import cmltext from '../../images/cmltext-black.svg';
-
+import logo from '../../images/cloudera-newco-logo.svg';
 
 export default function Chat() {
   const {
@@ -125,15 +125,8 @@ export default function Chat() {
             <small className="text-gray-500">Powered by</small>
             <div className="flex items-center">
               <Image
-                src={cmlicon}
-                alt="CML Icon"
-                width={40} // adjust as needed for mobile
-                height={40} // adjust as needed for mobile
-                className="w-10 h-10 md:w-12 md:h-12"
-              />
-              <Image
-                src={cmltext}
-                alt="CML Text"
+                src={logo}
+                alt="Cloudera AI"
                 width={120} // adjust as needed for mobile
                 height={40} // adjust as needed for mobile
                 className="w-30 h-10 md:w-40 md:h-12"

@@ -17,7 +17,7 @@ import {
 } from "@components/ui/popover";
 import { Menu } from "lucide-react";
 import logo from '../images/cloudera-newco-logo.svg';
-import cnowlogo from '../images/cnow-logo.png';
+// import cnowlogo from '../images/cnow-logo.png';
 
 const menuItems = [
   {
@@ -52,7 +52,7 @@ export default function Header() {
     <header className="flex py-2 justify-between px-8 bg-white">
       <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%' }}>
         <Image
-          src={cnowlogo}
+          src={logo}
           alt="Cloudera Logo"
           style={{ height: '70%', width: 'auto', objectFit: 'contain' }}
         />

@@ -42,7 +42,7 @@ environment_variables:
 
 runtimes:
   - editor: JupyterLab
-    kernel: Python 3.11
+    kernel: Python 3.10
     edition: Standard
 
 

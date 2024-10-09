@@ -14,7 +14,7 @@ ipywidgets==8.1.1
 milvus
 nltk==3.8.1
 openai
-pandas==2.0.3
+pandas==2.2.3
 pinecone-client
 pymilvus
 requests==2.31.0

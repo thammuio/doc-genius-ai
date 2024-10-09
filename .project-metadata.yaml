@@ -43,7 +43,7 @@ environment_variables:
 runtimes:
   - editor: JupyterLab
     kernel: Python 3.10
-    edition: Nvidia GPU
+    edition: Standard
 
 
 tasks:
@@ -61,9 +61,8 @@ tasks:
     script: session/install-deps/install_general_deps.py
     short_summary: Install Dependencies for your Project
     kernel: python3
-    cpu: 4
-    memory: 16
-    gpu: 1
+    cpu: 2
+    memory: 8
 
   - type: create_job
     name: Populate Milvus Vector DB with documents embeddings
@@ -117,9 +116,8 @@ tasks:
     script: chat-ui/app.py
     short_summary: Start frontend UI for DocGenuis AI Chatbot 
     long_summary: This task will run Flask app to serve the Chatbot Frontend UI. Remember to enable unauthenticated app access for external access to the UI.
-    cpu: 4
-    memory: 16
-    gpu: 1
+    cpu: 2
+    memory: 8
     environment_variables:
       TASK_TYPE: START_APPLICATION
     bypass_authentication: true

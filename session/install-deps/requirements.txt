@@ -28,3 +28,4 @@ transformers==4.33.1
 typing-extensions==4.5.0
 urllib3==1.25.4
 uvicorn[standard]==0.23.2
+flask

@@ -43,8 +43,8 @@ def get_settings_data():
             }
         ],
         "user_id": "genius",
-        "chatbot_name": "FleetGenius AI",
-        "chatbot_desc": "ACME's Intelligent Logistics Assistant!",
+        "chatbot_name": "RetailGenius AI",
+        "chatbot_desc": "ACME's Intelligent Shopping Assistant!",
         "models": model_names,
         "sample_3_questions": sample_3_questions,
         "kb_name": kb_vector_index

@@ -65,6 +65,8 @@
 ### Chatbot UI (Front end)
 `chat-ui` directrory hosts the code for Chatbot UI.
 
+### Variables
+Look at [Variables](.env.example) when Deploying the AMP.
 
 ## Requirements
 #### CML Instance Types

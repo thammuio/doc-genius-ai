@@ -68,6 +68,7 @@
 ### Variables
 Look at [Variables](.env.example) when Deploying the AMP. Refer [Cloduera AI Inference](https://www.cloudera.com/products/machine-learning/ai-inference-service.html) Docs to Get Inference endpoint and Key.
 
+
 ## Requirements
 #### CML Instance Types
 - A GPU instance is required to perform inference on the LLM

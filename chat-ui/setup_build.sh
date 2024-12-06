@@ -85,6 +85,8 @@ echo "Current working directory: $PWD"
 
 
 # Install project dependencies
+yarn config set network-timeout 600000
+yarn cache clean
 yarn install
 if [ $? -ne 0 ]; then
     echo "yarn install failed"
